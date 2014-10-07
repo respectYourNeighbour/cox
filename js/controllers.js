@@ -5,7 +5,7 @@
 var myAngularApp = angular.module('myAngularApp', []);
 
 myAngularApp.controller('myListCtrl', function($scope) {
-  $scope.phones = [
+  $scope.heroes = [
     {'name': 'Spider-Man',
      'snippet': 'Fast and it has the ability to create spider-webs.'},
     {'name': 'Storm',
