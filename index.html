@@ -49,8 +49,9 @@
       </div>
       <div class="col-md-3">
         <h3>This list get's it's data from the controller.js</h3>
+        Search: <input ng-model="justAquery">
         <ul>
-          <li ng-repeat="hero in heroes">
+          <li ng-repeat="hero in heroes | filter:justAquery">
             {{hero.name}}
             <p>{{hero.snippet}}</p>
           </li>
