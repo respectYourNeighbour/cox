@@ -49,11 +49,19 @@
       </div>
       <div class="col-md-3">
         <h3>This list get's it's data from the controller.js</h3>
+        Sort by:
+        <select ng-model="orderProperty">
+          <option value="name">Alphabetical</option>
+          <option value="age">Newest</option>
+        </select>
+        <p>You are searchin for: {{justAquery}}</p>
         Search: <input ng-model="justAquery">
+        <br><br>
         <ul>
-          <li ng-repeat="hero in heroes | filter:justAquery">
-            {{hero.name}}
+          <li ng-repeat="hero in heroes | filter:justAquery | orderBy:orderProperty">
+            <span>{{hero.name}}</span>
             <p>{{hero.snippet}}</p>
+            <p>Age: {{hero.age}}</p>
           </li>
           <p>Total number of heroes: {{heroes.length}}</p>
         </ul>
