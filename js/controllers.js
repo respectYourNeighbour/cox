@@ -13,4 +13,5 @@ myAngularApp.controller('myListCtrl', function($scope) {
     {'name': 'Profesor-X™',
      'snippet': 'Super chill cool guy.'}
   ];
+  $scope.name = 'user';
 });
