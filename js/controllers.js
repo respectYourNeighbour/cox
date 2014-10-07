@@ -5,7 +5,7 @@
 var myAngularApp = angular.module('myAngularApp', []);
 
 // +++++++++++++++++++++++++++++++++++++++
-// 'Data' without a $http request;		 +
+// 'Data' without a $http request;       +
 // You don't need a web-server for this; +
 // +++++++++++++++++++++++++++++++++++++++
 /*
@@ -25,7 +25,7 @@ myAngularApp.controller('myListCtrl', function($scope) {
 
 
 // +++++++++++++++++++++++++++++++++++++++++++++++++++++++++
-// 'Data' fetched with a $http request;					   +
+// 'Data' fetched with a $http request;                    +
 //  You need a web-server for this up and running;         +
 // +++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 myAngularApp.controller('myListCtrl', function($scope, $http) {
