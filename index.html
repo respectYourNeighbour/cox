@@ -31,31 +31,31 @@
       </div>
 
       <div class="col-md-3">
+        <h3>This list is hard-coded into HTML.</h3>
         <ul>
           <li>
-            <span>Nexus S</span>
+            <span>Spider-Man</span>
             <p>
-              Fast just got faster with Nexus S.
+              Special powers: spider-web.
             </p>
           </li>
           <li>
-            <span>Motorola XOOM™ with Wi-Fi</span>
+            <span>Profesor-X</span>
             <p>
-              The Next, Next Generation tablet.
+              Special power: can read minds.
             </p>
           </li>
         </ul>
-        <p>Total number of phones: 2</p>
       </div>
 
       <div class="col-md-3">
+        <h3>This list get's it's data from the controller.js</h3>
         <ul>
           <li ng-repeat="phone in phones">
             {{phone.name}}
             <p>{{phone.snippet}}</p>
           </li>
         </ul>
-        <p>Total number of phones: 2</p>
       </div>
     </div>
 
