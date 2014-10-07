@@ -4,6 +4,11 @@
 
 var myAngularApp = angular.module('myAngularApp', []);
 
+// +++++++++++++++++++++++++++++++++++++++
+// 'Data' without a $http request;		 +
+// You don't need a web-server for this; +
+// +++++++++++++++++++++++++++++++++++++++
+/*
 myAngularApp.controller('myListCtrl', function($scope) {
   $scope.heroes = [
     {'name': 'Spider-Man',
@@ -16,6 +21,18 @@ myAngularApp.controller('myListCtrl', function($scope) {
      'snippet': 'Super chill cool guy.',
      'age':'43'}
   ];
-  $scope.name = 'user';
-  $scope.orderProperty = 'age';
+*/
+
+
+// +++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+// 'Data' fetched with a $http request;					   +
+//  You need a web-server for this up and running;         +
+// +++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+myAngularApp.controller('myListCtrl', function($scope, $http) {
+	$http.get('resources/lista.json').success(function(data) {
+		$scope.heroes = data;
+	});
+
+	$scope.name = 'user';
+	$scope.orderProperty = 'age';
 });
