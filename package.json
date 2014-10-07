@@ -10,5 +10,8 @@
     "grunt-contrib-watch": "~0.6.1",
     "grunt-contrib-less ": "*",
     "http-server": "^0.6.1"
+  },
+  "scripts": {
+    "start": "http-server -a 0.0.0.0 -p 8090"
   }
 }
