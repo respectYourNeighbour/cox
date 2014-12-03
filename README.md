@@ -1,4 +1,4 @@
-AngularDraft
+AngularDraft with Grunt
 ============
 ## "npm install"
 - This command will install all the dependencies inside the **package.json** needed for Grunt, and Grunt Task's to run. 
