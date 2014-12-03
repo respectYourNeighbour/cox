@@ -58,7 +58,8 @@ module.exports = function(grunt) {
           'dest/resources/file2.json': ['resources/file2.json'],
           'dest/resources/file3.json': ['resources/file3.json'],
           'dest/resources/file4.json': ['resources/file4.json'],
-          'dest/resources/file5.json': ['resources/file5.json']
+          'dest/resources/file5.json': ['resources/file5.json'],
+          'dest/resources/lista.json': ['resources/lisa.json']
         }
       }
     },
