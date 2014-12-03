@@ -4,8 +4,8 @@ AngularDraft with Grunt
 - This command will install all the dependencies inside the **package.json** needed for Grunt, and Grunt Task's to run. 
 
 ## "grunt"
-- Run at least 1 time the command **grunt**, and after that the working project will be created in the folder 'dest/..'. 
-- Delete the **deleteble** folder inside the **'dest/..'** folder.
+- After you run the command **grunt**, the working project will be created in the folder 'dest/..'. 
+- Delete the **deleteble** folder inside the **'dest/..'** folder as it is no longer needed.
 
 ## "npm install http-server -g"
 - This command will install the http-server globally.
