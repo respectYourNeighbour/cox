@@ -29,7 +29,7 @@ myAngularApp.controller('myListCtrl', function($scope) {
 //  You need a web-server for this up and running;         +
 // +++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 myAngularApp.controller('myListCtrl', ['$scope', '$http', function($scope, $http) {
-	$http.get('resources/lista.json').success(function(data) {
+	$http.get('resources/lista.json' , {cache:true}).success(function(data) {
 		$scope.heroes = data;
 	});
 
