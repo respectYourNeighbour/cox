@@ -10,7 +10,7 @@ module.exports = function(grunt) {
           collapseWhitespace: true
         },
         files: {
-          'dest/<%= pkg.name %>.html':'*.html'
+          'dest/index.html':'*.html'
         }
       }
     },
