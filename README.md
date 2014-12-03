@@ -9,4 +9,4 @@ From inside the aplications folder, run the **http-server** command to start the
 ## "npm install"
 - This command will install all the dependencies inside the **package.json** needed for Grunt, and Grunt Task's to run. 
 - First you want to run at least 1 time the command grunt, and after that the working project will be created in the folder 'dest/..'. 
-- But all the changes you should do they should be in the _root folder.
+- Delete the **deleteble** folder inside the dest/ folder.
