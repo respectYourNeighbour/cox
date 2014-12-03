@@ -28,11 +28,11 @@ myAngularApp.controller('myListCtrl', function($scope) {
 // 'Data' fetched with a $http request;                    +
 //  You need a web-server for this up and running;         +
 // +++++++++++++++++++++++++++++++++++++++++++++++++++++++++
-myAngularApp.controller('myListCtrl', function($scope, $http) {
+myAngularApp.controller('myListCtrl', ['$scope', '$http', function($scope, $http) {
 	$http.get('resources/lista.json').success(function(data) {
 		$scope.heroes = data;
 	});
 
 	$scope.name = 'user';
 	$scope.orderProperty = 'age';
-});
+}]);

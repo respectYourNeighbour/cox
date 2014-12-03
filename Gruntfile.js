@@ -43,7 +43,7 @@ module.exports = function(grunt) {
           banner: '/* My minified css file */'
         },
         files: {
-          'dest/css/<%= pkg.name %>.min.css': ['<%= concat.css.dest %>']
+          'dest/css/style.min.css': ['<%= concat.css.dest %>']
         }
       }
     },
@@ -53,7 +53,7 @@ module.exports = function(grunt) {
       },
       dest: {
         files: {
-          'dest/js/<%= pkg.name %>.min.js': ['<%= concat.js.dest %>']
+          'dest/js/app.min.js': ['<%= concat.js.dest %>']
         }
       }
     },
