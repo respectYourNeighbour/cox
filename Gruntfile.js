@@ -47,6 +47,21 @@ module.exports = function(grunt) {
         }
       }
     },
+    jsonmin: {
+      stripAll: {
+        options: {
+          stripWhitespace: true,
+          stripComments: true
+        },
+        files: {
+          'dest/resources/file1.json': ['resources/file1.json'],
+          'dest/resources/file2.json': ['resources/file2.json'],
+          'dest/resources/file3.json': ['resources/file3.json'],
+          'dest/resources/file4.json': ['resources/file4.json'],
+          'dest/resources/file5.json': ['resources/file5.json']
+        }
+      }
+    },
     uglify: {
       options: {
         banner: '/*! <%= pkg.name %> <%= grunt.template.today("dd-mm-yyyy") %> */\n'
@@ -69,9 +84,10 @@ module.exports = function(grunt) {
   grunt.loadNpmTasks('grunt-contrib-htmlmin');
   grunt.loadNpmTasks('grunt-contrib-uglify');
   grunt.loadNpmTasks('grunt-contrib-concat');
+  grunt.loadNpmTasks('grunt-jsonmin');
   grunt.loadNpmTasks('grunt-contrib-watch');
   
-  grunt.registerTask('default', ['less', 'concat', 'cssmin', 'uglify','htmlmin']);
+  grunt.registerTask('default', ['less', 'concat', 'cssmin', 'uglify','htmlmin','jsonmin']);
   grunt.registerTask('watchme', ['watch']);
 };
 
