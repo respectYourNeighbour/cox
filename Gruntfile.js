@@ -25,9 +25,9 @@ module.exports = function(grunt) {
       }
     },
     concat: {
-      options: {
-        separator: ';'
-      },
+      // options: {
+      //   separator: ';'
+      // },
       js: {
         src: 'js/**/*.js', 
         dest: 'dest/deletable/<%= pkg.name %>.js'
