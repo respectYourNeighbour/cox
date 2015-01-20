@@ -75,7 +75,7 @@ module.exports = function(grunt) {
     },
     watch: {
       files: ['css/**/*.less', 'css/**/*.css','js/**/*.js','*.html'],
-      tasks: ['less', 'concat', 'cssmin','uglify', 'htmlmin'],
+      tasks: ['newer:less', 'newer:concat', 'newer:cssmin','newer:uglify', 'newer:htmlmin'],
       options: {livereload: true}
     }
   });
@@ -86,9 +86,10 @@ module.exports = function(grunt) {
   grunt.loadNpmTasks('grunt-contrib-uglify');
   grunt.loadNpmTasks('grunt-contrib-concat');
   grunt.loadNpmTasks('grunt-jsonmin');
+  grunt.loadNpmTasks('grunt-newer');
   grunt.loadNpmTasks('grunt-contrib-watch');
   
-  grunt.registerTask('default', ['less', 'concat', 'cssmin', 'uglify','htmlmin','jsonmin']);
+  grunt.registerTask('default', ['newer:less', 'newer:concat', 'newer:cssmin', 'newer:uglify','newer:htmlmin','newer:jsonmin']);
   grunt.registerTask('watchme', ['watch']);
 };
 
