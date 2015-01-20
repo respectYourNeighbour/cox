@@ -1,14 +1,17 @@
-@baseColor: #FF22FF;
+@bodyBackgroundColor: #EDEDED;
+@headings: #FF9500;
+@headingFont: 'Lobster', cursive;
 
 body{
 
-	background-color: #112211!important;
+	background-color: @bodyBackgroundColor;
 
 	p{
 		color: red;
 	}
 	h3{
-		color: teal;
+		font-family: @headingFont;
+		color: @headings;
 	}
 	header{
 		background-color: #222211;
