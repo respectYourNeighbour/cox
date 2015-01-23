@@ -63,6 +63,12 @@ module.exports = function(grunt) {
         }
       }
     },
+    "merge-json": {
+        "en": {
+            src: [ "resources/*.json" ],
+            dest: "dest/resources/lista1.json"
+        }
+    },
     uglify: {
       options: {
         banner: '/*! <%= pkg.name %> <%= grunt.template.today("dd-mm-yyyy") %> */\n'
@@ -75,7 +81,7 @@ module.exports = function(grunt) {
     },
     watch: {
       files: ['css/**/*.less', 'css/**/*.css','js/**/*.js','*.html', 'resources/*.json'],
-      tasks: ['newer:less', 'newer:concat', 'newer:cssmin','newer:uglify', 'newer:htmlmin', 'newer:jsonmin'],
+      tasks: ['newer:less', 'newer:concat', 'newer:cssmin','newer:uglify', 'newer:htmlmin', 'newer:merge-json', 'newer:jsonmin'],
       options: {livereload: true}
     }
   });
@@ -85,11 +91,12 @@ module.exports = function(grunt) {
   grunt.loadNpmTasks('grunt-contrib-htmlmin');
   grunt.loadNpmTasks('grunt-contrib-uglify');
   grunt.loadNpmTasks('grunt-contrib-concat');
+  grunt.loadNpmTasks('grunt-merge-json');
   grunt.loadNpmTasks('grunt-jsonmin');
   grunt.loadNpmTasks('grunt-newer');
   grunt.loadNpmTasks('grunt-contrib-watch');
   
-  grunt.registerTask('default', ['newer:less', 'newer:concat', 'newer:cssmin', 'newer:uglify','newer:htmlmin','newer:jsonmin']);
+  grunt.registerTask('default', ['newer:less', 'newer:concat', 'newer:cssmin', 'newer:uglify','newer:htmlmin', 'newer:merge-json', 'newer:jsonmin']);
   grunt.registerTask('watchme', ['watch']);
 };
 
