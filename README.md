@@ -1,10 +1,10 @@
 AngularDraft with Grunt
 ============
 ## "npm install"
-- This command will install all the dependencies inside the **package.json** needed for Grunt, and Grunt Task's to run. 
+- Open a new terminal window on the folder **AngularDraft_Grunt** and run this command **npm install** to install all the dependencies inside the file **package.json** needed for Grunt and Grunt Task's to run. 
 
 ## "grunt"
-- After you run the command **grunt**, the working project will be created in the folder 'dest/..'. 
+- Executing the command **grunt**, will create a new folder 'dest/..' with the project optimized. 
 - Delete the **deleteble** folder inside the **'dest/..'** folder as it is no longer needed.
 
 ## "npm install http-server -g"
@@ -12,6 +12,5 @@ AngularDraft with Grunt
 - For the app to work you need a http-server and if you dont have one installed, this command will fix that.<br/>
 - Check more documentation about http-server here: https://github.com/nodeapps/http-server <br/>
 
-
 ## "http-server"
-- From inside the aplications folder, run the **http-server** command to start the simple http-server on that folder.
+- On the newly created folder named **dest** open a terminal windows and run the **http-server** command to start the simple http-server on that folder.
