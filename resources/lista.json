@@ -1,39 +1,15 @@
-[
-    {
+{
+    "Item1_9": {
         "age": 0, 
         "id": "file1", 
         "imageUrl": "img/phones/motorola-xoom-with-wi-fi.0.jpg", 
         "name": "Spider-Man", 
         "snippet": "Cea mai tare descriere pentru eroul nr.1"
-    }, 
-    {
-        "age": 1, 
+    },
+    "age": 1, 
         "id": "file2", 
         "imageUrl": "img/phones/motorola-xoom.0.jpg", 
         "name": "Iron Man", 
         "snippet": "Cea mai tare descriere pentru eroul nr.2"
-    }, 
-    {
-        "age": 2, 
-        "carrier": "AT&T", 
-        "id": "file3", 
-        "imageUrl": "img/phones/motorola-atrix-4g.0.jpg", 
-        "name": "Captain America", 
-        "snippet": "Cea mai tare descriere pentru eroul nr.3"
-    }, 
-    {
-        "age": 3, 
-        "id": "file4", 
-        "imageUrl": "img/phones/dell-streak-7.0.jpg", 
-        "name": "Hulk", 
-        "snippet": "Cea mai tare descriere pentru eroul nr.4"
-    }, 
-    {
-        "age": 4, 
-        "carrier": "Cellular South", 
-        "id": "file5", 
-        "imageUrl": "img/phones/samsung-gem.0.jpg", 
-        "name": "Thor", 
-        "snippet": "Cea mai tare descriere pentru eroul nr.5"
-    }
-]
+    },
+}
