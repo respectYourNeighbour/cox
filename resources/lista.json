@@ -6,10 +6,11 @@
         "name": "Spider-Man", 
         "snippet": "Cea mai tare descriere pentru eroul nr.1"
     },
-    "age": 1, 
+    "Item1_10": {
+        "age": 0, 
         "id": "file2", 
-        "imageUrl": "img/phones/motorola-xoom.0.jpg", 
-        "name": "Iron Man", 
+        "imageUrl": "img/phones/motorola-xoom-with-wi-fi.0.jpg", 
+        "name": "Hulk", 
         "snippet": "Cea mai tare descriere pentru eroul nr.2"
-    },
+    }
 }
