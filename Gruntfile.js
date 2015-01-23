@@ -77,7 +77,10 @@ module.exports = function(grunt) {
         watch: {
             files: ['css/**/*.less', 'css/**/*.css','js/**/*.js','*.html', 'resources/*.json'],
             tasks: ['newer:less', 'newer:concat', 'newer:cssmin','newer:uglify', 'newer:htmlmin', 'newer:merge-json', 'newer:jsonmin'],
-            options: {livereload: true}
+            livereload: {
+                options: { livereload: true },
+                files: ['dest/**/*'],
+            },
         }
     });
 
