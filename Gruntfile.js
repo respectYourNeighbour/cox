@@ -86,7 +86,7 @@ module.exports = function(grunt) {
         },
         watch: {
             files: ['css/**/*.less', 'css/**/*.css','js/**/*.js','*.html', 'resources/*.json'],
-            tasks: ['newer:less', 'newer:concat', 'newer:cssmin','newer:uglify', 'newer:htmlmin', 'newer:merge-json', 'newer:jsonmin'],
+            tasks: ['newer:less', 'newer:concat', 'newer:htmlmin', 'newer:uglify', 'newer:merge-json', 'newer:jsonmin', 'uncss', 'cssmin'],
             livereload: {
                 options: { livereload: true },
                 files: ['dest/**/*'],
@@ -105,7 +105,7 @@ module.exports = function(grunt) {
     grunt.loadNpmTasks('grunt-newer');
     grunt.loadNpmTasks('grunt-contrib-watch');
 
-    grunt.registerTask('default', ['newer:less', 'newer:concat', 'newer:htmlmin', 'newer:uglify', 'newer:merge-json', 'newer:jsonmin', 'uncss', 'newer:cssmin']);
+    grunt.registerTask('default', ['newer:less', 'newer:concat', 'newer:htmlmin', 'newer:uglify', 'newer:merge-json', 'newer:jsonmin', 'uncss', 'cssmin']);
     grunt.registerTask('watchme', ['watch']);
 };
 
