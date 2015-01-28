@@ -5,6 +5,7 @@ AngularDraft with Grunt
 - grunt-contrib-less
 - grunt-contrib-concat
 - grunt-contrib-cssmin
+- grunt-uncss
 - grunt-merge-json
 - grunt-jsonmin
 - grunt-contrib-uglify
