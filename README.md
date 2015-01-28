@@ -8,6 +8,7 @@ AngularDraft with Grunt
 - grunt-merge-json
 - grunt-jsonmin
 - grunt-contrib-uglify
+- grunt-newer
 - grunt-contrib-watch
 
 ### "npm install"
