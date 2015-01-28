@@ -1,5 +1,15 @@
 AngularDraft with Grunt
 ============
+Grunt Plugins:
+- grunt-contrib-htmlmin
+- grunt-contrib-less
+- grunt-contrib-concat
+- grunt-contrib-cssmin
+- grunt-merge-json
+- grunt-jsonmin
+- grunt-contrib-uglify
+- grunt-contrib-watch
+
 ## "npm install"
 - Open a new terminal window on the folder **AngularDraft_Grunt** and run this command **npm install** to install all the dependencies inside the file **package.json** needed for Grunt and Grunt Task's to run. 
 
