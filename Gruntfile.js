@@ -37,13 +37,23 @@ module.exports = function(grunt) {
                 dest: 'dest/deletable/<%= pkg.name %>.css'
             }
         }, 
+        uncss: {
+            dest: {
+                options: {
+                    stylesheets: ['dest/deletable/AngularDraft.css']
+                },
+                files: {
+                    'dest/deletable/tidy.css': ['index.html']
+                }
+            }
+        },
         cssmin: {
             add_banner: {
                 options: {
                     banner: '/* My minified css file */'
                 },
                 files: {
-                    'dest/css/style.min.css': ['<%= concat.css.dest %>']
+                    'dest/css/style.min.css': ['dest/deletable/tidy.css']
                 }
             }
         },
@@ -85,6 +95,7 @@ module.exports = function(grunt) {
     });
 
     grunt.loadNpmTasks('grunt-contrib-less');
+    grunt.loadNpmTasks('grunt-uncss');
     grunt.loadNpmTasks('grunt-contrib-cssmin');
     grunt.loadNpmTasks('grunt-contrib-htmlmin');
     grunt.loadNpmTasks('grunt-contrib-uglify');
@@ -94,7 +105,7 @@ module.exports = function(grunt) {
     grunt.loadNpmTasks('grunt-newer');
     grunt.loadNpmTasks('grunt-contrib-watch');
 
-    grunt.registerTask('default', ['newer:less', 'newer:concat', 'newer:cssmin', 'newer:uglify','newer:htmlmin', 'newer:merge-json', 'newer:jsonmin']);
+    grunt.registerTask('default', ['newer:less', 'newer:concat', 'newer:htmlmin', 'newer:uglify', 'newer:merge-json', 'newer:jsonmin', 'uncss', 'newer:cssmin']);
     grunt.registerTask('watchme', ['watch']);
 };
 
