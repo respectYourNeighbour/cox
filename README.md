@@ -17,7 +17,7 @@ AngularDraft with Grunt
 
 ### "grunt"
 - Executing the command **grunt**, will create a new folder 'dest/..' with the project optimized. 
-- Delete the **deleteble** folder inside the **'dest/..'** folder as it is no longer needed.
+- Another folder named **_temp/deletable/..** will also be created in the root project, this folder can be deleted.
 
 ### "npm install http-server -g"
 - This command will install the http-server globally.
