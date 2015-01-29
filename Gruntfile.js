@@ -89,7 +89,7 @@ module.exports = function(grunt) {
             tasks: ['newer:less', 'newer:concat', 'newer:htmlmin', 'newer:uglify', 'newer:merge-json', 'newer:jsonmin', 'uncss', 'cssmin'],
             livereload: {
                 options: { livereload: true },
-                files: ['dest/**/*'],
+                files: ['dest/**/*.html','dest/**/*.css','dest/**/*.js'],
             },
         }
     });
