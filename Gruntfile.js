@@ -30,20 +30,20 @@ module.exports = function(grunt) {
             // },
             js: {
                 src: 'js/**/*.js', 
-                dest: 'dest/deletable/<%= pkg.name %>.js'
+                dest: '_temp/deletable/<%= pkg.name %>.js'
             },
             css: {
                 src: 'css/*.css',
-                dest: 'dest/deletable/<%= pkg.name %>.css'
+                dest: '_temp/deletable/<%= pkg.name %>.css'
             }
         }, 
         uncss: {
             dest: {
                 options: {
-                    stylesheets: ['dest/deletable/AngularDraft.css']
+                    stylesheets: ['_temp/deletable/AngularDraft.css']
                 },
                 files: {
-                    'dest/deletable/tidy.css': ['index.html']
+                    '_temp/deletable/tidy.css': ['index.html']
                 }
             }
         },
@@ -53,7 +53,7 @@ module.exports = function(grunt) {
                     banner: '/* My minified css file */'
                 },
                 files: {
-                    'dest/css/style.min.css': ['dest/deletable/tidy.css']
+                    'dest/css/style.min.css': ['_temp/deletable/tidy.css']
                 }
             }
         },
