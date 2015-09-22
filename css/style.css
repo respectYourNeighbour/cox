@@ -39,10 +39,14 @@ body .cbp-spmenu a:hover {
   background: #54789a;
   text-decoration: none;
 }
-body .cbp-spmenu a:active {
-  background: #afdefa;
-  color: #47a3da;
-  text-decoration: none;
+body .cbp-spmenu a.selected {
+  background-color: #3d5b77;
+  border: 1px solid #2f4c67;
+  border-left: 4px solid #07a9e1;
+  -webkit-transition: all ease 0.3s;
+  -moz-transition: all ease 0.3s;
+  -o-transition: all ease 0.3s;
+  transition: all ease 0.3s;
 }
 body .cbp-spmenu-vertical {
   width: 240px;

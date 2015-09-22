@@ -38,6 +38,15 @@ myAngularApp.controller('myListCtrl', ['$scope', '$http', function($scope, $http
         $("#cbp-spmenu-s1").toggleClass("cbp-spmenu-open")
     };
 
+    $(".cbp-spmenu a").on("click", function() {
+        var $this = $(this),
+            $links = $(".cbp-spmenu a");
+
+        $links.removeClass("selected");
+        $this.addClass("selected");
+    });
+
+
     $( ".menu-icon" ).click(function() {
       $( this ).toggleClass( "effect1" );
     });
