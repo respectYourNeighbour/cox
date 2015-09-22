@@ -17,14 +17,16 @@
     <!--   Normalize  -->   <link rel="stylesheet" type="text/css" href="http://cdnjs.cloudflare.com/ajax/libs/normalize/3.0.1/normalize.min.css">
     <!-- Bootstrap CSS-->   <link rel="stylesheet" type="text/css" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
     <!-- Custom Styles-->   <link rel="stylesheet" type="text/css" href="css/style.min.css">
+    <link href="http://code.ionicframework.com/ionicons/1.4.1/css/ionicons.min.css" rel="stylesheet" type="text/css"/>
 </head>
 
 
 <body ng-controller="myListCtrl">
 
     <nav class="cbp-spmenu cbp-spmenu-vertical cbp-spmenu-left" id="cbp-spmenu-s1">
-        <h3>Menu</h3>
+        <h3>What's in your fridge</h3>
         <a href="#">Login</a>
+        <a href="#">Recepies</a>
         <a href="#">My Account</a>
         <a href="#">Chat Room</a>
         <a href="#">Users List</a>
@@ -32,6 +34,22 @@
             <div class="menu-icon-line"></div>
         </div>
     </nav>
+
+    <div class="signin cf">
+        <div class="avatar"></div>
+            <form>
+                <div class="inputrow">
+                    <input type="text" id="name" placeholder="Username"/>
+                    <label for="name" class="ion-person"></label>
+                </div>
+                <div class="inputrow">
+                    <input type="password" id="pass" placeholder="Password"/>
+                    <label for="pass" class="ion-locked"></label>
+                </div>
+                <input type="submit" value="Login"/>
+            </form>
+        </div>
+    </div>
    
 
 
