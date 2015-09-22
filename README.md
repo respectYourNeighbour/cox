@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 AngularDraft with Grunt
 ============
 ## Grunt Plugins:
@@ -26,3 +27,6 @@ AngularDraft with Grunt
 
 ### "http-server"
 - On the newly created folder named **dest** open a terminal windows and run the **http-server** command to start the simple http-server on that folder.
+=======
+# cox
+>>>>>>> 39b234ae44e422ecc5859718c7520da819dc74e8
