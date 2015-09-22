@@ -33,45 +33,6 @@
             <hr>
             <p>1 + 2 = {{1 + 2}}</p>
         </div>
-        <div class="col-md-3">
-            <h3>This list is hard-coded into HTML.</h3>
-            <ul>
-                <li>
-                    <span>Spider-Man</span>
-                    <p>Special powers: spider-web.</p>
-                </li>
-                <li>
-                    <span>Profesor-X</span>
-                    <p>Special power: can read minds.</p>
-                </li>
-            </ul>
-        </div>
-        <div class="col-md-3">
-            <h3>This list get's it's data from the controller.js</h3>
-            Sort by:
-            <select ng-model="orderProperty">
-                <option value="name">Alphabetical</option>
-                <option value="age">Newest</option>
-            </select>
-            <p>You are searchin for: {{justAquery}}</p>
-            Search: <input ng-model="justAquery">
-            <br><br>
-            <ul>
-                <li ng-repeat="hero in heroes | filter:justAquery | orderBy:orderProperty">
-                    <span>{{hero.name}}</span>
-                    <p>{{hero.snippet}}</p>
-                    <p>Age: {{hero.age}}</p>
-                </li>
-                <p>Total number of heroes: {{heroes.length}}</p>
-            </ul>
-        </div>
-        <div class="col-md-3">
-            <h3>Table with <code>ng-repeat</code></h3>
-            <table>
-                <tr><th>row number</th></tr>
-                <tr ng-repeat="i in [0, 1, 2, 3, 4, 5, 6, 7]"><td>{{i}}</td></tr>
-            </table>
-        </div>
     </div>
 
 
