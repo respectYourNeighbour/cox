@@ -1,4 +1,4 @@
-@bodyBackgroundColor: #EDEDED;
+@bodyBackgroundColor: #cadbec;
 @headings: #FF9500;
 @headingFont: 'Lobster', cursive;
 
@@ -16,4 +16,120 @@ body{
 	header{
 		background-color: #222211;
 	}
+	
+	/* General style for menu */
+	.cbp-spmenu {
+		background: #4b6c8b;
+		position: fixed;
+		/* Transitions */
+		-webkit-transition: all 0.3s ease;
+		-moz-transition: all 0.3s ease;
+		transition: all 0.3s ease;
+		h3 {
+			color: #afdefa;
+			font-size: 1.9em;
+			padding: 20px;
+			margin: 0;
+			font-weight: 300;
+			background: #3c5674;
+		}
+		a {
+			display: block;
+			color: #fff;
+			font-size: 1.1em;
+			font-weight: 300;
+		}
+		a:hover {
+			background: #54789a;
+			text-decoration: none;
+		}
+		a:active {
+			background: #afdefa;
+			color: #47a3da;
+			text-decoration: none;
+		}
+	}
+	.cbp-spmenu-vertical {
+		width: 240px;
+		height: 100%;
+		top: 0;
+		z-index: 1000;
+		a {
+			padding: 1em;
+			border: 1px solid #3c5674;
+		    border-top-color: #537797;
+		    border-left-color: #537797;
+		    text-decoration: none;
+		}
+	}
+	.cbp-spmenu-left {
+		left: -240px;
+	}
+
+	.cbp-spmenu-open {
+		left: 0px;
+	}
+
+	/*Menu Icon*/
+	.menu-icon{
+		margin: auto;
+		width:40px;
+		cursor: pointer;
+		left: 50px;
+		float: right;
+		position: absolute;
+		left: 260px;
+		top: 20px;
+		cursor: pointer;
+		height: 33px;
+		.menu-icon-line{
+			background: #537797;
+			content:'';
+			display:block;
+			height:3px;
+			margin:6px 0;
+			width:100%;
+			border-radius: 4px;
+			transition: all .3s ease;
+		}
+	}
+	  
+	.menu-icon:after{
+	    background: #537797;
+	    content:'';
+	    display:block;
+	    height:3px;
+	    margin:6px 0;
+	    width:100%;
+	    border-radius: 4px;
+	    transition: all .3s ease;
+	}
+	.menu-icon:before{
+	    background: #537797;
+	    content:'';
+	    display:block;
+	    height:3px;
+	    margin:6px 0;
+	    width:100%;
+	    border-radius: 4px;
+	    transition: all .3s ease;
+	}
+
+	.effect1:after{ 
+		transform: translateY(-9px) rotate(225deg);
+	}
+	.effect1 .menu-icon-line{ 
+		transform: rotate(180deg);
+		opacity: 0;
+	}
+	.effect1:before{ 
+		transform: translateY(9px) rotate(135deg);
+	}
 }
+
+
+  
+
+  
+  
+

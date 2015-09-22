@@ -45,3 +45,8 @@ myAngularApp.controller('myListCtrl', ['$scope', '$http', function($scope, $http
 	$scope.name = 'user';
 	$scope.orderProperty = 'age';
 }]);
+
+$(document).ready(function() {
+    // use jquery
+  	console.log("Document ready!");
+});
