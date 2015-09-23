@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 var LOG_TAG = "ContentHandler";
 var UsersDAO = require('../DAO/users').UsersDAO
 function ContentHandler(db) {
@@ -110,7 +109,6 @@ function ContentHandler(db) {
 	}
 }
 
-=======
 var LOG_TAG = "ContentHandler";
 var UsersDAO = require('../DAO/users').UsersDAO
 function ContentHandler(db) {
@@ -222,5 +220,4 @@ function ContentHandler(db) {
 	}
 }
 
->>>>>>> d0adaffd0a38aa4aa44145ef32ddc77cabaf25fb
 module.exports = ContentHandler;
