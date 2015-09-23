@@ -9,6 +9,12 @@ angular.module('main_app', ['ui.router']).config(function($stateProvider, $urlRo
 			url : '/',
             controller : function($http,$scope) {
             	console.log("main controller")
+<<<<<<< HEAD
+=======
+				$http.get('resources/lista.json' , {cache:true}).success(function(data) {
+					$scope.heroes = data;
+				});
+>>>>>>> d0adaffd0a38aa4aa44145ef32ddc77cabaf25fb
 
 			    showLeft.onclick = function() {
 			        $(this).toggleClass("active");
