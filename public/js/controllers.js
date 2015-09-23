@@ -34,7 +34,8 @@ myAngularApp.controller('myListCtrl', ['$scope', '$http', function($scope, $http
 	});
 
     showLeft.onclick = function() {
-        $(this).toggleClass("active")
+        $(this).toggleClass("active");
+        $( this ).toggleClass( "effect1" );
         $("#cbp-spmenu-s1").toggleClass("cbp-spmenu-open")
     };
 
@@ -47,9 +48,9 @@ myAngularApp.controller('myListCtrl', ['$scope', '$http', function($scope, $http
     });
 
 
-    $( ".menu-icon" ).click(function() {
+    /*$( ".menu-icon" ).click(function() {
       $( this ).toggleClass( "effect1" );
-    });
+    });*/
 
 	$scope.name = 'user';
 	$scope.orderProperty = 'age';

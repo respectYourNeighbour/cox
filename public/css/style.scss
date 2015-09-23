@@ -21,7 +21,7 @@ body{
 	header{
 		background-color: #222211;
 	}
-	
+
 	/* General style for menu */
 	.cbp-spmenu {
 		background: #4b6c8b;
@@ -104,7 +104,7 @@ body{
 			transition: all .3s ease;
 		}
 	}
-	  
+
 	.menu-icon:after{
 	    background: #537797;
 	    content:'';
@@ -126,23 +126,23 @@ body{
 	    transition: all .3s ease;
 	}
 
-	.effect1:after{ 
+	.effect1:after{
 		transform: translateY(-9px) rotate(225deg);
 	}
-	.effect1 .menu-icon-line{ 
+	.effect1 .menu-icon-line{
 		transform: rotate(180deg);
 		opacity: 0;
 	}
-	.effect1:before{ 
+	.effect1:before{
 		transform: translateY(9px) rotate(135deg);
 	}
 }
 
 
-  
 
-  
-  
+
+
+
 
 /*sign in*/
 .signin {
