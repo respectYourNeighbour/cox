@@ -4,7 +4,7 @@ var express = require('express'),
 	bodyParser = require('body-parser'),
 	cons = require('consolidate'),
 	MongoClient = require('mongodb').MongoClient,
-	routes = require('./routes'),
+	//routes = require('./routes'),
 	path = require('path'),
 	port = 3000;
 
@@ -21,7 +21,12 @@ MongoClient.connect('mongodb://localhost:27017/fridge', function(err, db) {
 	app.use(cookieParser());
 	app.use(bodyParser());
 
-	routes(app,db);
+	//routes(app,db);
+	require('./routes/auth-routes.js')(app, db); // load our routes and pass in our app and fully configured passport
+	require('./routes/asd.js')(app, db); // load our routes and pass in our app and fully configured passport
+
+
+
 
 	app.listen(port);
 	console.log("Express server listening on port : " + port);
@@ -43,7 +48,10 @@ http://solidfoundationwebdev.com/posts/require-authentication-for-certain-routes
 https://medium.com/@mattlanham/authentication-with-angularjs-4e927af3a15f
 
 
+http://stackoverflow.com/questions/22537311/angular-ui-router-login-authentication
 
+
+http://onehungrymind.com/winning-http-interceptors-angularjs/
 
 
 */

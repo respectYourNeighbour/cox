@@ -23,24 +23,6 @@ function UsersDAO(db) {
 
         // Create user document
         var user = {'_id': username, 'password': password_hash};
-
-        // TODO: hw2.3
-
-
-
-
-            /*
-
-                on login and signup there should be a check for errors and return these errors with res.json or something
-
-            */
-
-
-
-
-
-
-
         console.log("addUser usersDAO",user)
         users.insert(user, function (err, result) {
             "use strict";
@@ -74,10 +56,10 @@ function UsersDAO(db) {
                 }
             }
             else {
-               // var no_such_user_error = new Error("User: " + user + " does not exist");
+                var no_such_user_error = new Error("User: " + user + " does not exist");
                 // Set an extra field so we can distinguish this from a db error
-                //no_such_user_error.no_such_user = true;
-                //callback(no_such_user_error, null);
+                no_such_user_error.no_such_user = true;
+                callback(no_such_user_error, null);
 
                 console.log("user not found")
             }

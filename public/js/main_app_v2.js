@@ -18,99 +18,31 @@ etc
 	$stateProvider
 		.state('main', {
 			url : '/',
-            controller : function($rootScope,$http,$scope, Auth) {
-            	console.log("main controller")
-            	var main = this;
-
-            	$scope.Auth = Auth;
-
-            	$scope.$on("login",function(event, value) {
-            		console.log("on login<<<<<<<<<<<<<<")
-            		$scope.login = true;
-            	})
-
-
-
-
-
-            	$scope.isAuthenticated = function() {
-            		console.log("Auth.isLoggedIn : ",Auth.isLoggedIn())
-            		return Auth.isLoggedIn();
-            	}
-            	console.log("isAuthenticated : " , $scope.isAuthenticated())
-			    showLeft.onclick = function() {
-			        $(this).toggleClass("active");
-			        $( this ).toggleClass( "effect1" );
-			        $("#cbp-spmenu-s1").toggleClass("cbp-spmenu-open")
-			    };
-
-			    $(".cbp-spmenu a").on("click", function() {
-			        var $this = $(this),
-			            $links = $(".cbp-spmenu a");
-
-			        $links.removeClass("selected");
-			        $this.addClass("selected");
-			    });
-
-				$scope.name = 'user';
-				$scope.orderProperty = 'age';
-			}
+			templateUrl: 'views/index.html',
+            controller : MainCtrl
 		})
-		.state('login', {
+		.state('main.login', {
 			url : '/authentication',
 			templateUrl: 'partials/login.html',
-            controller : function($scope, Auth) {
-				console.log("login controller");
-				$scope.login = function() {
-					var user = {
-						username: $scope.username,
-						password:$scope.password
-					}
-					console.log("user",user)
-					console.log("login clicked")
-					Auth.login(user, function(data){
-						console.log("data?!?!",data)
-					})
-				}
-			}
+            controller : LoginCtrl
 		})
-		.state('signup', {
+		.state('main.signup', {
 			url : '/authentication',
 			templateUrl: 'partials/signup.html',
-            controller : function($scope, Auth) {
-				console.log("signup controller");
-				$scope.signup = function() {
-					var user = {
-						username: $scope.username,
-						password:$scope.password
-					}
-					console.log("user",user)
-					console.log("signup clicked")
-					Auth.signup(user);
-				}
-			}
+            controller : SignUpCtrl
 		})
-		.state('state1', {
+		.state('main.state1', {
 			url : '/state1',
 			templateUrl: 'partials/state1.html',
-			controller : function($scope, Auth) {
-				console.log("state1 controller");
-				$scope.Auth = Auth;
-
-			},
+			controller : RecipesCtrl,
 			authenticate : true
 		})
 		$locationProvider.html5Mode(true);
-}).controller('NavbarCtrl',function($rootScope,$scope, Auth) {
+}).controller('NavbarCtrl',function($scope, Auth) {
 	console.log("ooooooooooooooooooooooooooooNavbarCtrl")
-
-	var main = this;
-				$rootScope.$on('authorized', function() {
-        			console.log("cccccccccccccccccccccccccccccccccon authorized")
-        			$scope.isUserLoggedIn = true;
-        			main.currentUser = Auth.getCurrentUser();
-        			console.log("main.currentUser",main.currentUser)
-    			});
+	$scope.$watch('Auth._authenticated', function() {
+		console.log("OOOOOOOOOOOOOOOOOOOOOOOOOOOOO WATCH")
+	})
 
 }).run(function($rootScope,$state, Auth) {
 	console.log("success")
@@ -161,7 +93,7 @@ etc
 
         		console.log("$rootScope.toState : ",$rootScope.toState)
 				event.preventDefault();
-				$state.go('login');
+				$state.go('main.login');
 			}
 
 		} else {
@@ -194,10 +126,7 @@ angular.module('main_app').factory('Auth',function($http, $rootScope, $state, $t
 
 				_authenticated = true;
 				console.log("_authenticated : " + _authenticated)
-				$rootScope.$broadcast('authorized');
-				if($rootScope.toState)
-					$state.go($rootScope.toState);
-				else $state.go('main')
+				$state.go($rootScope.toState);
 
 
 				//success(user);
@@ -211,9 +140,6 @@ angular.module('main_app').factory('Auth',function($http, $rootScope, $state, $t
 				$rootScope.user = user;
 
 			})
-		},
-		getCurrentUser : function() {
-			return $rootScope.user;
 		}
 	}
 })
