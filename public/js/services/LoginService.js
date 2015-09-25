@@ -1,33 +1,23 @@
-angular.module('main_app').service('LoginService', function($http, $rootScope, $state, UserService) {
+angular.module('main_app').service('LoginService', function($http, $rootScope, $state, $cookies,UserService) {
         var service = this;
         service.isLoggedIn = function() {
-            return UserService.getCurrentUser();
-        };
+            //$cookies.remove("session");
+            console.log("isLoggedIn",$cookies.getAll())
+            if($cookies.get("session")) {
+                return true;
+            } else {
+                return false;
+            }
+        }
         service.login =  function(user) {
             console.log(">>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>login")
+            console.log("cookies",$cookies)
             return $http.post('/login', user);
-            /*$http.post('/login', user).success(function(user) {
-                console.log("success", user)
-                $rootScope.user = user;
-                console.log("rootscope", $rootScope.user)
-
-
-                _authenticated = true;
-                console.log("_authenticated : " + _authenticated)
-                $rootScope.$broadcast('authorized');
-                if ($rootScope.toState)
-                    $state.go($rootScope.toState);
-                else $state.go('main')
-
-s
-                //success(user);
-            }).error(function() {
-                console.log("error")
-            });*/
         };
         service.logout = function() {
             console.log("logout in LoginService")
-            return true;
+            $cookies.remove("session");
+            return $http.get('/logout');
         }
         service.signup = function(user) {
             console.log("signup")

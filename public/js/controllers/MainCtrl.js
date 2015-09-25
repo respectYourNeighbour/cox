@@ -7,8 +7,11 @@ angular.module('main_app').controller('MainCtrl', function($rootScope, $scope, $
     });
 
     $scope.logout = function() {
-        console.log("logout clicked");
-        LoginService.logout();
+        //console.log("logout clicked");
+        LoginService.logout().then(function(response) {
+            $scope.currentUser = UserService.setCurrentUser(null);
+            $state.go('main');
+        });
     }
 
     showLeft.onclick = function() {
@@ -18,6 +21,7 @@ angular.module('main_app').controller('MainCtrl', function($rootScope, $scope, $
     };
 
     $(".cbp-spmenu a").on("click", function() {
+        console.log(">>>>>>>>>>>>>>>click")
         var $this = $(this),
             $links = $(".cbp-spmenu a");
 

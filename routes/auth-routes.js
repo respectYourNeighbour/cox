@@ -1,8 +1,10 @@
 var UsersDAO = require('../DAO/users').UsersDAO
+var SessionsDAO = require('../DAO/sessions').SessionsDAO
 module.exports = function(app, db) {
     console.log("routes authroutes.js")
 
     var users = new UsersDAO(db);
+    var sessions = new SessionsDAO(db);
 
 
     app.post('/login', function(req, res, next) {
@@ -10,18 +12,29 @@ module.exports = function(app, db) {
         var username = req.body.username;
         var password = req.body.password;
 
-        console.log("user submitted username: " + username + " pass: " + password);
-        console.log("users", users)
+        //console.log("user submitted username: " + username + " pass: " + password);
         users.validateLogin(username, password, function(err, user) {
             if (err) {
+            	console.log("err found",err)
                 if (err.no_such_user || err.invalid_password) {
+                	//console.log("err.no_such")
                     res.json(err);
                 } else {
                     // Some other kind of error
                     return next(err);
                 }
+            } else {
+            	sessions.startSession(user['_id'], function(err, session_id) {
+	                "use strict";
+
+	                if (err) return next(err);
+	                //console.log("started session with id : ",session_id)
+
+	                //res.cookie('session', session_id);
+	                //console.log("else user",user)
+            		res.json(user);
+	            });
             }
-            res.json(user);
         })
     })
     app.post('/signup', function(req, res, next) {
@@ -43,7 +56,21 @@ module.exports = function(app, db) {
                     return next(err);
                 }
             }
-            console.log("signup user", user)
+            //console.log("signup user", user)
+        });
+    })
+
+    app.get('/getUserFromSession', function(req, res, next) {
+        console.log("getUserFromSession")
+        var session_id = req.cookies.session;
+        sessions.getUsername(session_id, function(err, username) {
+            "use strict";
+
+            if(err) console.log("getUserFromSession err",err)
+            if(username) {
+            	//console.log("getUserFromSession username",username)
+            	return res.json(username);
+            }
         });
     })
 }

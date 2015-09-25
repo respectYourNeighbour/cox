@@ -7,7 +7,7 @@ module.exports = function(app, db) {
 
     //app.use(contentHandler.isLoggedInMiddleware)
 
-    app.get('/', contentHandler.displayMainPage);
+    //app.get('/', contentHandler.displayMainPage);
 
     /*app.get('/login', contentHandler.displayLoginForm);
 	app.get('/api/ingredients/allIngredients', contentHandler.returnAllIngredients);

@@ -8,7 +8,7 @@ function UsersDAO(db) {
     /* If this constructor is called without the "new" operator, "this" points
      * to the global object. Log a warning and call it correctly. */
     if (false === (this instanceof UsersDAO)) {
-        console.log('Warning: UsersDAO constructor called without "new" operator');
+        //console.log('Warning: UsersDAO constructor called without "new" operator');
         return new UsersDAO(db);
     }
 
@@ -23,12 +23,12 @@ function UsersDAO(db) {
 
         // Create user document
         var user = {'_id': username, 'password': password_hash};
-        console.log("addUser usersDAO",user)
+        //console.log("addUser usersDAO",user)
         users.insert(user, function (err, result) {
             "use strict";
 
             if (!err) {
-                console.log("Inserted new user");
+                //console.log("Inserted new user");
                 return callback(null, result[0]);
             }
             return callback(err, null);
@@ -43,7 +43,7 @@ function UsersDAO(db) {
             "use strict";
 
             if (err) return callback(err, null);
-            console.log("user found", user)
+           // console.log("user found", user)
             if (user) {
                 if (bcrypt.compareSync(password, user.password)) {
                     callback(null, user);
@@ -56,12 +56,12 @@ function UsersDAO(db) {
                 }
             }
             else {
+                //console.log(">>>>>")
                 var no_such_user_error = new Error("User: " + user + " does not exist");
                 // Set an extra field so we can distinguish this from a db error
                 no_such_user_error.no_such_user = true;
+                //console.log("user not found")
                 callback(no_such_user_error, null);
-
-                console.log("user not found")
             }
         }
 

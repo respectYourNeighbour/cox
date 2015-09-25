@@ -8,7 +8,7 @@ function ContentHandler(db) {
     this.isLoggedInMiddleware = function(req, res, next) {
         console.log("isLoggedInMiddleware");
         var session_id = req.cookies.session;
-        console.log("session_id : " + session_id)
+        //console.log("session_id : " + session_id)
         return next();
         /*sessions.getUsername(session_id, function(err, username) {
             "use strict";
@@ -22,7 +22,7 @@ function ContentHandler(db) {
 
     this.displayMainPage = function(req, res, next) {
         "use strict";
-        console.log(LOG_TAG, "displayMainPage")
+        //console.log(LOG_TAG, "displayMainPage")
         return res.render('index.html');
     }
 

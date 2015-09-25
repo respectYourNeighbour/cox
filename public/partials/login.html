@@ -4,10 +4,12 @@
                 <div class="inputrow">
                     <input type="text" id="name" ng-model="username" placeholder="Username"/>
                     <label for="name" class="ion-person"></label>
+                    <p ng-if="login_username_error == true">Username invalid</p>
                 </div>
                 <div class="inputrow">
                     <input type="password" id="pass" ng-model="password" placeholder="Password"/>
                     <label for="pass" class="ion-locked"></label>
+                    <p ng-if="login_password_error">Invalid password</p>
                 </div>
                 <input type="submit" value="Login" ng-click="login()"/>
                 <a ui-sref="main.signup">Sign Up</a>

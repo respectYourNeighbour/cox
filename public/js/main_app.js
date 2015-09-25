@@ -1,5 +1,5 @@
-angular.module('main_app', ['ui.router']).config(function($stateProvider, $urlRouterProvider, $locationProvider) {
-    console.log("here")
+angular.module('main_app', ['ui.router','ngCookies']).config(function($stateProvider, $urlRouterProvider, $locationProvider) {
+    //console.log("here")
     $urlRouterProvider.otherwise('/');
     $stateProvider
         .state('main', {
@@ -21,28 +21,31 @@ angular.module('main_app', ['ui.router']).config(function($stateProvider, $urlRo
             controller: 'RecipesCtrl',
             authenticate: true
         })
-    $locationProvider.html5Mode(true);
+    $locationProvider.html5Mode({
+	  enabled: true,
+	  requireBase: false
+	});
 }).run(function($rootScope,$state, LoginService) {
-	console.log("success")
 	$rootScope.$on('$stateChangeSuccess', function(event, toState, toParams, fromState, fromParams){
-		console.log("stateChangeSuccess")
+		//console.log("stateChangeSuccess")
 	})
 	$rootScope.$on('$stateChangeStart', function(event, toState, toParams, fromState, fromParams){
 		console.log("stateChangeStart")
 		if(toState.authenticate) {
-			console.log("requires authenticate",toState)
+			//console.log("requires authenticate",toState)
 			if(LoginService.isLoggedIn()) {
 				console.log("is LoggedIn")
 			} else {
+				//console.log("not logged in")
 				$rootScope.toState = toState;
         		$rootScope.toParams = toParams;
-        		console.log("$rootScope.toState : ",$rootScope.toState)
+        		//console.log("$rootScope.toState : ",$rootScope.toState)
 				event.preventDefault();
 				$state.go('login');
 			}
 
 		} else {
-			console.log("route does not require authenticate : ",toState)
+			//console.log("route does not require authenticate : ",toState)
 		}
 	})
 });
