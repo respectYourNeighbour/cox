@@ -18,23 +18,40 @@
     <!-- Bootstrap CSS-->   <link rel="stylesheet" type="text/css" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
     <!-- Custom Styles-->   <link rel="stylesheet" type="text/css" href="css/style.css">
     <link href="http://code.ionicframework.com/ionicons/1.4.1/css/ionicons.min.css" rel="stylesheet" type="text/css"/>
+
+
+    <!--  Javascripts -->
+    <!--    jquery    -->   <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+    <!--  bootstrap   -->   <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
+    <!--    Angular   -->   <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.26/angular.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/angular-ui-router/0.2.15/angular-ui-router.min.js"></script>
+
+    <script type="text/javascript" src="js/main_app.js"></script>
+    <script type="text/javascript" src="js/services/LoginService.js"></script>
+    <script type="text/javascript" src="js/services/UserService.js"></script>
+    <script type="text/javascript" src="js/controllers/MainCtrl.js"></script>
+    <script type="text/javascript" src="js/controllers/LoginCtrl.js"></script>
+    <script type="text/javascript" src="js/controllers/SignUpCtrl.js"></script>
+    <script type="text/javascript" src="js/controllers/RecipesCtrl.js"></script>
+    <!--
+
+
+     -->
 </head>
 
 
-<body ng-app="main_app" >
+<body ng-app="main_app" ng-controller="MainCtrl">
 
-    <nav ng-controller="NavbarCtrl" class="cbp-spmenu cbp-spmenu-vertical cbp-spmenu-left cbp-spmenu-open" id="cbp-spmenu-s1">
+    <nav class="cbp-spmenu cbp-spmenu-vertical cbp-spmenu-left cbp-spmenu-open" id="cbp-spmenu-s1">
         <h3 ui-sref="main">What's in your fridge</h3>
-        <a ui-sref="login">Login</a>
+        <a ui-sref="login" ng-if="!currentUser">Login</a>
+        <a ui-sref="login" ng-if="currentUser" ng-click="logout()">Logout</a>
         <a ui-sref="state1">Recipes</a>
         <a href="#">My Account</a>
         <a href="#">Chat Room</a>
         <a href="#">Users List {{isUserLoggedIn}}</a>
 
         <a ui-sref="login" ng-if="isUserLoggedIn">Logout</a>
-
-        <button ng-if="main.currentUser" class="btn btn-default navbar-btn"
-               ng-click="main.logout()">Logout <strong>{{main.currentUser.email}}</strong></button>
 
 
         <div class="menuIcon menu-icon active effect1" id="showLeft">
@@ -53,19 +70,9 @@
 
 
 
-    <!--  Javascripts -->
-    <!--    jquery    -->   <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
-    <!--  bootstrap   -->   <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
-    <!--    Angular   -->   <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.26/angular.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/angular-ui-router/0.2.15/angular-ui-router.min.js"></script>
 
 
-    <script type="text/javascript" src="Controllers/MainCtrl.js"></script>
-    <script type="text/javascript" src="Controllers/LoginCtrl.js"></script>
-    <script type="text/javascript" src="Controllers/SignUpCtrl.js"></script>
-    <script type="text/javascript" src="Controllers/RecipesCtrl.js"></script>
 
-    <script type="text/javascript" src="js/main_app.js"></script>
 
 
 </body>
