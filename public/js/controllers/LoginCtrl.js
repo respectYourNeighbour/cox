@@ -1,17 +1,16 @@
-angular.module('main_app').controller('LoginCtrl', function($rootScope, $scope, $state, $cookies, LoginService, UserService) {
+angular.module('main_app').controller('LoginCtrl', function($rootScope,$location, $scope, $state, toastr, LoginService) {
     console.log("login controller");
 
-    $scope.login_username_error = false;
-    $scope.login_password_error = false;
     $scope.login = function() {
-        var user = {
-            username: $scope.username,
-            password: $scope.password
-        }
-        $scope.login_username_error = false;
-        LoginService.login(user).then(function(response) {
+        //$auth.login($scope.user)
+        LoginService.login($scope.user).then(function(response) {
         	console.log("function response",response);
-        	if(response.data.no_such_user) {
+            toastr.success('You have successfully signed in');
+            $location.path('/');
+            //$state.go('main')
+
+
+        	/*if(response.data.no_such_user) {
         		//console.log("response.data.no_such_user")
         		$scope.login_username_error = true;
         	} else if(response.data.invalid_password){
@@ -30,9 +29,12 @@ angular.module('main_app').controller('LoginCtrl', function($rootScope, $scope, 
 		            //console.log("else")
 		            $state.go('main')
 		        }
-        	}
+        	}*/
+        }).catch(function(response) {
+            toastr.error(response.data.message, response.status);
+            console.log("response",response)
         })
-        console.log("user", user)
-        console.log("login clicked")
+        //console.log("user", user)
+        //console.log("login clicked")
     }
 });

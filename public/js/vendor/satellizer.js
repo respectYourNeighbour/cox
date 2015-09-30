@@ -5,7 +5,7 @@
  */
 (function(window, angular, undefined) {
   'use strict';
-
+  console.log("satellizerul vietii")
   angular.module('satellizer', [])
     .constant('SatellizerConfig', {
       httpInterceptor: true,
@@ -210,7 +210,6 @@
           var $auth = {};
 
           $auth.login = function(user, opts) {
-            console.log("$auth.login")
             return local.login(user, opts);
           };
 
@@ -243,6 +242,7 @@
           };
 
           $auth.setToken = function(token) {
+            console.log(">>>>>token",token)
             shared.setToken({ access_token: token });
           };
 
@@ -291,22 +291,32 @@
           var token;
 
           if (accessToken) {
+            console.log("if accessToken", accessToken)
             if (angular.isObject(accessToken) && angular.isObject(accessToken.data)) {
+              
               response = accessToken;
+              console.log("primul if",response)
             } else if (angular.isString(accessToken)) {
+
               token = accessToken;
+               console.log("primul elseif",token)
             }
           }
 
           if (!token && response) {
+            console.log("!token && response")
             var tokenRootData = config.tokenRoot && config.tokenRoot.split('.').reduce(function(o, x) { return o[x]; }, response.data);
             token = tokenRootData ? tokenRootData[config.tokenName] : response.data[config.tokenName];
           }
 
           if (!token) {
+            console.log("!token")
             var tokenPath = config.tokenRoot ? config.tokenRoot + '.' + config.tokenName : config.tokenName;
             throw new Error('Expecting a token named "' + tokenPath + '" but instead got: ' + JSON.stringify(response.data));
           }
+
+          console.log("<<<<<tokenName",tokenName)
+          console.log("<<<<<<token",token)
 
           storage.set(tokenName, token);
         };
@@ -326,6 +336,7 @@
               var base64Url = token.split('.')[1];
               var base64 = base64Url.replace(/-/g, '+').replace(/_/g, '/');
               var exp = JSON.parse($window.atob(base64)).exp;
+              console.log("base64Url",base64Url)
 
               if (exp) {
                 var isExpired = Math.round(new Date().getTime() / 1000) >= exp;
@@ -418,7 +429,7 @@
           opts.method = opts.method || 'POST';
 
           return $http(opts).then(function(response) {
-            console.log("Local.login response", response)
+            console.log("Local.login response",response)
             shared.setToken(response);
             return response;
           });
@@ -440,10 +451,6 @@
 
         return Local;
       }])
-
-
-
-
     .factory('SatellizerOauth2', [
       '$q',
       '$http',
@@ -858,11 +865,13 @@
             if (shared.isAuthenticated() && config.httpInterceptor) {
               var tokenName = config.tokenPrefix ? config.tokenPrefix + '_' + config.tokenName : config.tokenName;
               var token = storage.get(tokenName);
+              
+              console.log("config",config)
 
               if (config.authHeader && config.authToken) {
                 token = config.authToken + ' ' + token;
               }
-
+              console.log("config.authHeader",config.authHeader)
               request.headers[config.authHeader] = token;
             }
 

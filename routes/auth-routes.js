@@ -1,76 +1,93 @@
 var UsersDAO = require('../DAO/users').UsersDAO
 var SessionsDAO = require('../DAO/sessions').SessionsDAO
+var User = require('../models/user')
+var moment = require('moment')
+var jwt = require('jwt-simple');
+var config = require('../config');
 module.exports = function(app, db) {
     console.log("routes authroutes.js")
 
     var users = new UsersDAO(db);
     var sessions = new SessionsDAO(db);
 
+    function ensureAuthenticated(req, res, next) {
+        console.log("req.headers",req.headers)
+        if (!req.headers.authorization) {
+            return res.status(401).send({
+                message: 'Please make sure your request has an Authorization header'
+            });
+        }
+        var token = req.headers.authorization.split(' ')[1];
+        console.log("token",token)
+        var payload = null;
+        try {
+            payload = jwt.decode(token, config.TOKEN_SECRET);
+            console.log("payload",payload)
+        } catch (err) {
+            return res.status(401).send({
+                message: err.message
+            });
+        }
 
-    app.post('/login', function(req, res, next) {
-        console.log("handleLogin")
-        var username = req.body.username;
+        if (payload.exp <= moment().unix()) {
+            return res.status(401).send({
+                message: 'Token has expired'
+            });
+        }
+        req.user = payload.sub;
+        next();
+    }
+
+
+    app.post('/auth/login', function(req, res, next) {
+        console.log("/auth/login")
+        var email = req.body.email;
         var password = req.body.password;
 
-        //console.log("user submitted username: " + username + " pass: " + password);
-        users.validateLogin(username, password, function(err, user) {
-            if (err) {
-            	console.log("err found",err)
-                if (err.no_such_user || err.invalid_password) {
-                	//console.log("err.no_such")
-                    res.json(err);
-                } else {
-                    // Some other kind of error
-                    return next(err);
-                }
-            } else {
-            	sessions.startSession(user['_id'], function(err, session_id) {
-	                "use strict";
-
-	                if (err) return next(err);
-	                //console.log("started session with id : ",session_id)
-
-	                //res.cookie('session', session_id);
-	                //console.log("else user",user)
-            		res.json(user);
-	            });
+        users.validateLogin(email, password, function(err, generatedToken){
+            if(!generatedToken) {
+                console.log("!generatedToken. err.message : ", err.message)
+                res.status(401).send({
+                    message : err.message
+                });
             }
-        })
-    })
-    app.post('/signup', function(req, res, next) {
-        console.log("handleSignup")
-        var username = req.body.username;
+            console.log("login success",generatedToken)
+            res.send({
+                token : generatedToken
+            });
+        });
+    });
+
+
+    app.get('/api/me', ensureAuthenticated, function(req, res) {
+        console.log("req.user",req.user)
+        User.findById(req.user, function(err, user) {
+            res.send(user);
+        });
+    });
+
+
+
+
+    app.post('/auth/signup', function(req, res, next) {
+        console.log("/auth/signup")
+        var email = req.body.email;
         var password = req.body.password;
 
-        users.addUser(username, password, function(err, user) {
+        users.addUser(email, password, function(err, generatedToken) {
             "use strict";
-
-            if (err) {
-                // this was a duplicate
-                if (err.code == '11000') {
-                    errors['username_error'] = "Username already in use. Please choose another";
-                    return res.render("signup", errors);
-                }
-                // this was a different error
-                else {
-                    return next(err);
-                }
+            
+            console.log("generatedToken",generatedToken)
+            if(err) {
+                console.log("err",err.message)
+                return res.status(409).send({
+                    message : err.message
+                })
             }
-            //console.log("signup user", user)
+            res.send({
+                token : generatedToken
+            });
         });
-    })
+    });
 
-    app.get('/getUserFromSession', function(req, res, next) {
-        console.log("getUserFromSession")
-        var session_id = req.cookies.session;
-        sessions.getUsername(session_id, function(err, username) {
-            "use strict";
-
-            if(err) console.log("getUserFromSession err",err)
-            if(username) {
-            	//console.log("getUserFromSession username",username)
-            	return res.json(username);
-            }
-        });
-    })
 }

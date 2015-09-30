@@ -11,12 +11,14 @@
     <!--[if IE]><script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script><![endif]-->
 
 
-    <!-- google fonts -->   <link href='http://fonts.googleapis.com/css?family=Lobster' rel='stylesheet' type='text/css'>
-    <!--   LOAD CSS   -->
-    <!-- Font Awesome -->   <link href="http://maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet">
-    <!-- Bootstrap CSS-->   <link rel="stylesheet" type="text/css" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
-    <!-- Custom Styles-->   <link rel="stylesheet" type="text/css" href="css/style.css">
-    <link href="http://code.ionicframework.com/ionicons/1.4.1/css/ionicons.min.css" rel="stylesheet" type="text/css"/>
+    <link href='http://fonts.googleapis.com/css?family=Lobster' rel='stylesheet' type='text/css'>
+    <link href="http://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
+    <link href="//code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css" rel="stylesheet">
+    <link href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/css/bootstrap.min.css" rel="stylesheet">
+    <link href="css/angular-toastr.css" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="css/style.css">
+    <link rel="stylesheet" type="text/css" href="css/other_css.css">
 
 
     <!--  Javascripts -->
@@ -25,11 +27,16 @@
     <!--    Angular   -->   <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.4/angular.min.js"></script>
     <script src="https://code.angularjs.org/1.4.4/angular-cookies.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/angular-ui-router/0.2.15/angular-ui-router.min.js"></script>
+    <script src="js/vendor/angular-toastr.tpls.js"></script>
+    <script src="js/vendor/satellizer.js"></script>
 
     <script type="text/javascript" src="js/main_app.js"></script>
+    <script type="text/javascript" src="js/services/AccountService.js"></script>
     <script type="text/javascript" src="js/services/LoginService.js"></script>
     <script type="text/javascript" src="js/services/UserService.js"></script>
-    <script type="text/javascript" src="js/controllers/MainCtrl.js"></script>
+    <script type="text/javascript" src="js/controllers/HomeCtrl.js"></script>
+    <script type="text/javascript" src="js/controllers/ProfileCtrl.js"></script>
+    <script type="text/javascript" src="js/controllers/NavbarCtrl.js"></script>
     <script type="text/javascript" src="js/controllers/LoginCtrl.js"></script>
     <script type="text/javascript" src="js/controllers/SignUpCtrl.js"></script>
     <script type="text/javascript" src="js/controllers/RecipesCtrl.js"></script>
@@ -42,18 +49,16 @@
 
 <body ng-app="main_app">
 
-    <nav ng-controller='MainCtrl as main' class="cbp-spmenu cbp-spmenu-vertical cbp-spmenu-left cbp-spmenu-open" id="cbp-spmenu-s1">
-        <h3 ui-sref="main">What's in your fridge</h3>
+    <nav ng-controller='NavbarCtrl' class="cbp-spmenu cbp-spmenu-vertical cbp-spmenu-left cbp-spmenu-open" id="cbp-spmenu-s1">
+        <h3 ui-sref="home" href="/">What's in your fridge</h3>
 
-        <a ui-sref="login" ng-if="!loggedIn">Login</a>
-        <a ui-sref="login" ng-if="loggedIn" ng-click="logout()">Logout</a>
+        <a ui-sref="login" ng-if="!isAuthenticated()">Login</a>
+        <a ng-if="isAuthenticated()" ng-click="logout()">Logout</a>
 
         <a ui-sref="state1">Recipes</a>
-        <a href="#">My Account</a>
-        <a href="#">Chat Room</a>
-        <a href="#">Users List {{isUserLoggedIn}}</a>
-
-        <a ui-sref="login" ng-if="isUserLoggedIn">Logout</a>
+        <a ui-sref="profile" ng-if="isAuthenticated()">My Account</a>
+        <a href="#" ng-if="isAuthenticated()">Chat Room</a>
+        <a href="#">Users List</a>
 
 
         <div class="menuIcon menu-icon active effect1" id="showLeft">
@@ -61,8 +66,8 @@
         </div>
     </nav>
 
-    <div class="col-md-offset-6" ng-if="currentUser">Show this div on main only if THERE IS A USER LOGGED IN</div>
-    <div class="col-md-offset-6" ng-if="!currentUser">Show this div on main only if there is no user logged in</div>
+    <div class="col-md-offset-6" ng-if="isAuthenticated()">Show this div on main only if THERE IS A USER LOGGED IN</div>
+    <div class="col-md-offset-6" ng-if="!isAuthenticated()">Show this div on main only if there is no user logged in</div>
 
     <div class="container">
         <div ui-view>

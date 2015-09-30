@@ -1,4 +1,7 @@
 var User = require('./models/user');
+var moment = require('moment')
+var jwt = require('jwt-simple');
+var config = require('./config');
 module.exports = function(app, db) {
     /*
      |--------------------------------------------------------------------------
@@ -6,16 +9,19 @@ module.exports = function(app, db) {
      |--------------------------------------------------------------------------
      */
     function ensureAuthenticated(req, res, next) {
+        console.log("req.headers",req.headers)
         if (!req.headers.authorization) {
             return res.status(401).send({
                 message: 'Please make sure your request has an Authorization header'
             });
         }
         var token = req.headers.authorization.split(' ')[1];
+        console.log("token",token)
 
         var payload = null;
         try {
             payload = jwt.decode(token, config.TOKEN_SECRET);
+            console.log("payload",payload)
         } catch (err) {
             return res.status(401).send({
                 message: err.message
@@ -83,16 +89,12 @@ module.exports = function(app, db) {
      |--------------------------------------------------------------------------
      */
     app.post('/auth/login', function(req, res) {
-        console.log("here111",User)
-        User.find({},function(err,users){
-            console.log("find",users)
-        })
         User.findOne({
-            email: "asd@asd"
-        }, function(err, user) {
+            email: req.body.email
+        }, "+password",function(err, user) {
             console.log("err",err)
             console.log("user",user)
-             /*if (!user) {
+             if (!user) {
                 console.log("!user")
                 return res.status(401).send({
                     message: 'Wrong email and/or password'
@@ -109,7 +111,7 @@ module.exports = function(app, db) {
                 res.send({
                     token: createJWT(user)
                 });
-            });*/
+            });
         });
     });
 
@@ -119,6 +121,8 @@ module.exports = function(app, db) {
      |--------------------------------------------------------------------------
      */
     app.post('/auth/signup', function(req, res) {
+        console.log("signup",User)
+        console.log("req.body.email",req.body.password)
         User.findOne({
             email: req.body.email
         }, function(err, existingUser) {

@@ -1,5 +1,5 @@
 //var SessionsDAO = require('../DAO/sessions').SessionsDAO
-angular.module('main_app').service('UserService', function($http, $rootScope, $state) {
+angular.module('main_app').service('UserService', function($http, $rootScope, $state, $auth) {
         var service = this,
             currentUser = null;
         //var sessions = new SessionsDAO(db);
@@ -15,6 +15,8 @@ angular.module('main_app').service('UserService', function($http, $rootScope, $s
 
             });*/
             return currentUser;
-
+        }
+        service.getMe = function() {
+            return $http.get('/api/me');
         }
 })

@@ -1,9 +1,11 @@
-angular.module('main_app', ['ui.router','ngCookies']).config(function($stateProvider, $urlRouterProvider, $locationProvider) {
+angular.module('main_app', ['ui.router','toastr', 'satellizer']).config(function($stateProvider, $urlRouterProvider, $locationProvider, $authProvider) {
     //console.log("here")
     $urlRouterProvider.otherwise('/');
     $stateProvider
-        .state('main', {
-            url: '/'
+        .state('home', {
+            url: '/',
+            controller:'HomeCtrl',
+            templateUrl:'partials/home.html'
         })
         .state('login', {
             url: '/authentication',
@@ -20,6 +22,11 @@ angular.module('main_app', ['ui.router','ngCookies']).config(function($stateProv
             templateUrl: 'partials/state1.html',
             controller: 'RecipesCtrl',
             authenticate: true
+        })
+        .state('profile', {
+            url: '/profile',
+            templateUrl: 'partials/profile.html',
+            controller: 'ProfileCtrl'
         })
     $locationProvider.html5Mode({
 	  enabled: true,

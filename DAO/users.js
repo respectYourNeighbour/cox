@@ -1,6 +1,8 @@
 var bcrypt = require('bcrypt-nodejs');
-
-
+var User = require('../models/user')
+var moment = require('moment')
+var jwt = require('jwt-simple');
+var config = require('../config');
 /* The UsersDAO must be constructed with a connected database object */
 function UsersDAO(db) {
     "use strict";
@@ -14,58 +16,67 @@ function UsersDAO(db) {
 
     var users = db.collection("users");
 
-    this.addUser = function(username, password, callback) {
+    this.addUser = function(email, password, callback) {
         "use strict";
 
-        // Generate password hash
-        var salt = bcrypt.genSaltSync();
-        var password_hash = bcrypt.hashSync(password, salt);
-
-        // Create user document
-        var user = {'_id': username, 'password': password_hash};
-        //console.log("addUser usersDAO",user)
-        users.insert(user, function (err, result) {
-            "use strict";
-
-            if (!err) {
-                //console.log("Inserted new user");
-                return callback(null, result[0]);
+        User.findOne({
+            email: email
+        }, function(err, existingUser) {
+            if (existingUser) {
+                var email_taken = new Error("Email already taken");
+                return callback(email_taken, null);
+                /*return res.status(409).send({
+                    message: 'Email is already taken'
+                });*/
             }
-            return callback(err, null);
+            var user = new User({
+                displayName: 'username ' + email,
+                email: email,
+                password: password
+            });
+            user.save(function() {
+                console.log("user save",user)
+                return callback(null, createJWT(user))
+                /*res.send({
+                    token: createJWT(user)
+                });*/
+            });
         });
     }
 
-    this.validateLogin = function(username, password, callback) {
+    this.validateLogin = function(email, password, callback) {
         "use strict";
 
-        // Callback to pass to MongoDB that validates a user document
-        function validateUserDoc(err, user) {
-            "use strict";
-
-            if (err) return callback(err, null);
-           // console.log("user found", user)
-            if (user) {
-                if (bcrypt.compareSync(password, user.password)) {
-                    callback(null, user);
-                }
-                else {
-                    var invalid_password_error = new Error("Invalid password");
-                    // Set an extra field so we can distinguish this from a db error
-                    invalid_password_error.invalid_password = true;
-                    callback(invalid_password_error, null);
-                }
+        User.findOne({
+            email : email
+        }, "+password", function(err, user){
+            if(!user){
+                var wrong_email_or_password = new Error("Wrong email and/or password");
+                return callback(wrong_email_or_password, null);
             }
-            else {
-                //console.log(">>>>>")
-                var no_such_user_error = new Error("User: " + user + " does not exist");
-                // Set an extra field so we can distinguish this from a db error
-                no_such_user_error.no_such_user = true;
-                //console.log("user not found")
-                callback(no_such_user_error, null);
-            }
-        }
+            user.comparePassword(password, function(err, isMatch) {
+                if (!isMatch) {
+                    var wrong_email_or_password = new Error("Wrong email and/or password");
+                    return callback(wrong_email_or_password, null);
+                }
+                console.log("password match")
+                return callback(null, createJWT(user));
+            });
+        })
+    }
 
-        users.findOne({ '_id' : username }, validateUserDoc);
+    /*
+     |--------------------------------------------------------------------------
+     | Generate JSON Web Token
+     |--------------------------------------------------------------------------
+     */
+    function createJWT(user) {
+        var payload = {
+            sub: user._id,
+            iat: moment().unix(),
+            exp: moment().add(14, 'days').unix()
+        };
+        return jwt.encode(payload, config.TOKEN_SECRET);
     }
 }
 

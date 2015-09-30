@@ -11,13 +11,20 @@ var express = require('express');
 var logger = require('morgan');
 var MongoClient = require('mongodb').MongoClient;
 var app = express();
+var mongoose = require('mongoose')
 
 var config = require('./config');
-
+/*
 MongoClient.connect('mongodb://127.0.0.1/fridge', function(err, db) {
     'user strict';
 
     if (err) throw err;
+    
+});*/
+
+mongoose.connect('mongodb://127.0.0.1/fridge');
+    var db = mongoose.connection;
+
     app.set('port', process.env.PORT || 3000);
     app.use(cors());
     app.use(logger('dev'));
@@ -45,4 +52,3 @@ MongoClient.connect('mongodb://127.0.0.1/fridge', function(err, db) {
      app.listen(app.get('port'), function() {
         console.log('Express server listening on port ' + app.get('port'));
     });
-});

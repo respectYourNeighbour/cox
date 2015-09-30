@@ -7,7 +7,12 @@ angular.module('main_app').controller('SignUpCtrl', function($scope, LoginServic
         }
         console.log("user", user)
         console.log("signup clicked")
-        Auth.signup(user);
+        LoginService.signup(user).then(function(data){
+        	console.log("then signup",data)
+        }).catch(function(data){
+        	console.log("catch signup",data)
+        	toastr.error(response.data.message);
+        });
     }
 });
 
