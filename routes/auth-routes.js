@@ -47,7 +47,7 @@ module.exports = function(app, db) {
         users.validateLogin(email, password, function(err, generatedToken){
             if(!generatedToken) {
                 console.log("!generatedToken. err.message : ", err.message)
-                res.status(401).send({
+                return res.status(401).send({
                     message : err.message
                 });
             }
