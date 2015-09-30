@@ -6,7 +6,7 @@ var express = require('express'),
 	MongoClient = require('mongodb').MongoClient,
 	//routes = require('./routes'),
 	path = require('path'),
-	port = 3000;
+	port = 8080;
 
 MongoClient.connect('mongodb://localhost:27017/fridge', function(err, db) {
 	"use strict";
@@ -21,6 +21,8 @@ MongoClient.connect('mongodb://localhost:27017/fridge', function(err, db) {
 	app.use(cookieParser());
 	app.use(bodyParser());
 
+	app.set('jwtTokenSecret', '123456ABCDEF');
+
 	//routes(app,db);
 	require('./routes/auth-routes.js')(app, db); // load our routes and pass in our app and fully configured passport
 	require('./routes/asd.js')(app, db); // load our routes and pass in our app and fully configured passport
@@ -33,27 +35,34 @@ MongoClient.connect('mongodb://localhost:27017/fridge', function(err, db) {
 })
 
 
-
-
 /*
 
-DOCUMENTATION FILES
 
-https://vickev.com/#!/article/authentication-in-single-page-applications-node-js-passportjs-angularjs
-http://www.frederiknakstad.com/2013/01/21/authentication-in-single-page-applications-with-angular-js/
-https://thinkster.io/mean-stack-tutorial
-https://github.com/angular-ui/ui-router
-http://brewhouse.io/blog/2014/12/09/authentication-made-simple-in-single-page-angularjs-applications.html
-http://solidfoundationwebdev.com/posts/require-authentication-for-certain-routes-with-ui-router-in-angularjs
-https://medium.com/@mattlanham/authentication-with-angularjs-4e927af3a15f
-
-
-http://stackoverflow.com/questions/22537311/angular-ui-router-login-authentication
-
-
-http://onehungrymind.com/winning-http-interceptors-angularjs/
+http://www.sitepoint.com/implementing-authentication-angular-applications/
+https://docs.angularjs.org/api/ng/service/$q
+https://medium.com/opinionated-angularjs/techniques-for-authentication-in-angularjs-applications-7bbf0346acec
 
 http://code.tutsplus.com/tutorials/token-based-authentication-with-angularjs-nodejs--cms-22543
+
+http://thejackalofjavascript.com/architecting-a-restful-node-js-app/
+
+
++comments
+
+
+
+
+
+
+
+
+*********************************
+
+https://github.com/lynndylanhurley/ng-token-auth
+https://github.com/mikemclin/angular-acl
+
+**********************************
+
 
 
 */

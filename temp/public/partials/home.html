@@ -1,0 +1,18 @@
+<nav>
+    <h3 ui-sref="main">What's in your fridge</h3>
+
+    <a ui-sref="main.login" ng-if="!userInfo">Login</a>
+    <a ui-sref="main.state1">Recipes</a>
+    <a ng-click="logout()" ng-if="userInfo">Logout</a>
+    <a>{{userInfo}}</a>
+
+    <div class="menuIcon menu-icon active effect1" id="showLeft">
+        <div class="menu-icon-line"></div>
+    </div>
+</nav>
+
+    <div class="col-md-offset-6" ng-if="userInfo">Show this div on main only if THERE IS A USER LOGGED IN</div>
+    <div class="col-md-offset-6" ng-if="!userInfo">Show this div on main only if there is no user logged in</div>
+
+
+    <div ui-view></div>

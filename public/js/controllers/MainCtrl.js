@@ -5,6 +5,10 @@ angular.module('main_app').controller('MainCtrl', function($rootScope, $scope, $
          console.log("authorized");
         $scope.currentUser = UserService.getCurrentUser();
     });
+    $rootScope.$on('authorized', function() {
+         console.log("authorized");
+        $scope.currentUser = UserService.getCurrentUser();
+    });
 
     $scope.logout = function() {
         //console.log("logout clicked");
@@ -12,6 +16,10 @@ angular.module('main_app').controller('MainCtrl', function($rootScope, $scope, $
             $scope.currentUser = UserService.setCurrentUser(null);
             $state.go('main');
         });
+    }
+
+    $scope.loggedIn = function() {
+        main.isLoggedIn = LoginService.isLoggedIn();
     }
 
     showLeft.onclick = function() {
@@ -32,4 +40,6 @@ angular.module('main_app').controller('MainCtrl', function($rootScope, $scope, $
     $scope.name = 'user';
     $scope.orderProperty = 'age';
     $scope.currentUser = UserService.getCurrentUser();
+    main.isLoggedIn = LoginService.isLoggedIn();
+    console.log("main.isLoggedIn",main.isLoggedIn )
 });

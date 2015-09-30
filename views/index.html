@@ -45,8 +45,8 @@
     <nav ng-controller='MainCtrl as main' class="cbp-spmenu cbp-spmenu-vertical cbp-spmenu-left cbp-spmenu-open" id="cbp-spmenu-s1">
         <h3 ui-sref="main">What's in your fridge</h3>
 
-        <a ui-sref="login" ng-if="!currentUser">Login</a>
-        <a ui-sref="login" ng-if="currentUser" ng-click="logout()">Logout</a>
+        <a ui-sref="login" ng-if="!loggedIn">Login</a>
+        <a ui-sref="login" ng-if="loggedIn" ng-click="logout()">Logout</a>
 
         <a ui-sref="state1">Recipes</a>
         <a href="#">My Account</a>
