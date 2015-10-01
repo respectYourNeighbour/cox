@@ -21,7 +21,11 @@ angular.module('main_app', ['ui.router','toastr', 'satellizer']).config(function
             url: '/state1',
             templateUrl: 'partials/state1.html',
             controller: 'RecipesCtrl',
-            authenticate: true
+            resolve : {
+                ingredients : function($http){
+                    return $http.get('/recipes')
+                }
+            }
         })
         .state('profile', {
             url: '/profile',
@@ -38,7 +42,7 @@ angular.module('main_app', ['ui.router','toastr', 'satellizer']).config(function
 	})
 	$rootScope.$on('$stateChangeStart', function(event, toState, toParams, fromState, fromParams){
 		console.log("stateChangeStart")
-		if(toState.authenticate) {
+		/*if(toState.authenticate) {
 			//console.log("requires authenticate",toState)
 			if(LoginService.isLoggedIn()) {
 				console.log("is LoggedIn")
@@ -53,6 +57,6 @@ angular.module('main_app', ['ui.router','toastr', 'satellizer']).config(function
 
 		} else {
 			//console.log("route does not require authenticate : ",toState)
-		}
+		}*/
 	})
 });

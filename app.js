@@ -38,8 +38,7 @@ var express = require('express'),
     app.use(express.static(path.join(__dirname, 'public')));
 
     //routes(app,db);
-    require('./routes/auth-routes.js')(app, db); // load our routes and pass in our app and fully configured passport
-	require('./routes/asd.js')(app, db); // load our routes and pass in our app and fully configured passport
+	require('./routes/routes.js')(app, db); // load our routes and pass in our app and fully configured passport
     //require('./routes.js')(app, db); // load our routes and pass in our app and fully configured passport
     /*
     |--------------------------------------------------------------------------

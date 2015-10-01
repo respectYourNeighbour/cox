@@ -1,31 +1,20 @@
-angular.module('main_app').controller('SignUpCtrl', function($scope, LoginService) {
+angular.module('main_app').controller('SignUpCtrl', function($scope, $state, toastr, LoginService) {
     console.log("SignUpCtrl controller");
     $scope.signup = function() {
-        var user = {
-            username: $scope.username,
-            password: $scope.password
-        }
-        console.log("user", user)
-        console.log("signup clicked")
-        LoginService.signup(user).then(function(data){
-        	console.log("then signup",data)
-        }).catch(function(data){
-        	console.log("catch signup",data)
-        	toastr.error(response.data.message);
-        });
+        LoginService.signup($scope.user).then(function(response) {
+            console.log("SignUpCtrl function response",response);
+            toastr.success('You have successfully signed up');
+            LoginService.login($scope.user).then(function(response) {
+                LoginService.setToken(response);
+                toastr.success('You have successfully signed in');
+                $state.go('home');
+            }).catch(function(response) {
+                toastr.error(response.data.message, response.status);
+                console.log("SignUpCtrl response",response)
+            });
+        }).catch(function(response) {
+            toastr.error(response.data.message, response.status);
+            console.log("response",response)
+        })
     }
 });
-
-/*
-var SignUpCtrl = function($rootScope, $scope, $state, Auth) {
-console.log("signup controller");
-				$scope.signup = function() {
-					var user = {
-						username: $scope.username,
-						password:$scope.password
-					}
-					console.log("user",user)
-					console.log("signup clicked")
-					Auth.signup(user);
-				}
-			}*/

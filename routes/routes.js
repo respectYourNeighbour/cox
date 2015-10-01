@@ -1,23 +1,18 @@
 var ContentHandler = require('./ContentHandler');
+var AuthenticationHandler = require('./AuthenticationHandler');
 var path = require('path');
 module.exports = function(app, db) {
     console.log("routes index.js")
 
     var contentHandler = new ContentHandler(db);
+    var authenticationHandler = new AuthenticationHandler(db);
 
-    //app.use(contentHandler.isLoggedInMiddleware)
+    app.post('/auth/login', authenticationHandler.login);
+    app.post('/auth/signup', authenticationHandler.signup);
+    app.get('/recipes', contentHandler.returnAllIngredients)
 
-    //app.get('/', contentHandler.displayMainPage);
-
-    /*app.get('/login', contentHandler.displayLoginForm);
-	app.get('/api/ingredients/allIngredients', contentHandler.returnAllIngredients);
-	app.post('/api/loadRecipes', contentHandler.loadRecipesFromSelectedIngredients);
-
-
-	app.get('/api/private/newrecipe', contentHandler.displayNewRecipe);
-	app.post('/api/private/newrecipe', contentHandler.handleNewRecipe);*/
-
-
+    app.use('/api',authenticationHandler.ensureAuthenticated)
+    app.get('/api/me', contentHandler.myProfile)
 
     /*
 

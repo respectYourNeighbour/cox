@@ -1,5 +1,5 @@
-angular.module('main_app').controller('ProfileCtrl', function($scope,AccountService) {
-    console.log("RecipesCtrl controller");
+angular.module('main_app').controller('ProfileCtrl', function($scope, AccountService) {
+    console.log("ProfileCtrl controller");
 
     $scope.getProfile = function() {
         AccountService.getMe()
@@ -15,8 +15,3 @@ angular.module('main_app').controller('ProfileCtrl', function($scope,AccountServ
     $scope.getProfile();
 
 });
-/*
-var RecipesCtrl = function($rootScope, $scope, Auth) {
-	console.log("state1 controller");
-				$scope.Auth = Auth;
-}*/

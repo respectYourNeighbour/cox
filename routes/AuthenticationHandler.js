@@ -1,16 +1,15 @@
+var LOG_TAG = "AuthenticationHandler";
 var UsersDAO = require('../DAO/users').UsersDAO
-var SessionsDAO = require('../DAO/sessions').SessionsDAO
 var User = require('../models/user')
 var moment = require('moment')
 var jwt = require('jwt-simple');
 var config = require('../config');
-module.exports = function(app, db) {
-    console.log("routes authroutes.js")
+function AuthenticationHandler(db) {
 
     var users = new UsersDAO(db);
-    var sessions = new SessionsDAO(db);
 
-    function ensureAuthenticated(req, res, next) {
+    this.ensureAuthenticated = function(req, res, next) {
+        console.log("ensureAuthenticated!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!")
         console.log("req.headers",req.headers)
         if (!req.headers.authorization) {
             return res.status(401).send({
@@ -38,8 +37,7 @@ module.exports = function(app, db) {
         next();
     }
 
-
-    app.post('/auth/login', function(req, res, next) {
+    this.login = function(req, res, next) {
         console.log("/auth/login")
         var email = req.body.email;
         var password = req.body.password;
@@ -56,27 +54,17 @@ module.exports = function(app, db) {
                 token : generatedToken
             });
         });
-    });
+    }
 
-
-    app.get('/api/me', ensureAuthenticated, function(req, res) {
-        console.log("req.user",req.user)
-        User.findById(req.user, function(err, user) {
-            res.send(user);
-        });
-    });
-
-
-
-
-    app.post('/auth/signup', function(req, res, next) {
+    this.signup = function(req, res, next) {
+        "use strict";
         console.log("/auth/signup")
         var email = req.body.email;
         var password = req.body.password;
 
         users.addUser(email, password, function(err, generatedToken) {
             "use strict";
-            
+
             console.log("generatedToken",generatedToken)
             if(err) {
                 console.log("err",err.message)
@@ -88,6 +76,7 @@ module.exports = function(app, db) {
                 token : generatedToken
             });
         });
-    });
-
+    }
 }
+
+module.exports = AuthenticationHandler;

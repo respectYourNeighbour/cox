@@ -1,10 +1,7 @@
-angular.module('main_app').controller('RecipesCtrl', function($scope,UserService) {
+angular.module('main_app').controller('RecipesCtrl', function($scope, UserService, ingredients) {
     console.log("RecipesCtrl controller");
+
+    console.log("ingredients are", ingredients)
 
     $scope.currentUser = UserService.getCurrentUser();
 });
-/*
-var RecipesCtrl = function($rootScope, $scope, Auth) {
-	console.log("state1 controller");
-				$scope.Auth = Auth;
-}*/
