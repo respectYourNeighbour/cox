@@ -1,4 +1,19 @@
 angular.module('main_app').controller('HomeCtrl', function($scope, $http) {
+
+
+        // content appear
+        $('body').css('opacity', 1);
+    
+        // header 
+        $('.animatedTextContainer').textition({
+            map:      {x: 50, y: 20, z: 500},
+            speed:    0.8,
+            handler:  false,
+            autoplay: true,
+            interval: 3     
+        });    
+
+
     $http.jsonp('https://api.github.com/repos/sahat/satellizer?callback=JSON_CALLBACK')
         .success(function(data) {
             if (data) {
@@ -13,4 +28,9 @@ angular.module('main_app').controller('HomeCtrl', function($scope, $http) {
                 }
             }
         });
+
+
+
+
+
 });

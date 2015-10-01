@@ -17,12 +17,13 @@
     <link href="//code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css" rel="stylesheet">
     <link href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/css/bootstrap.min.css" rel="stylesheet">
     <link href="css/angular-toastr.css" rel="stylesheet">
-    <link rel="stylesheet" type="text/css" href="css/style.css">
     <link rel="stylesheet" type="text/css" href="css/other_css.css">
+    <link rel="stylesheet" type="text/css" href="css/style.css">
 
 
     <!--  Javascripts -->
     <!--    jquery    -->   <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+    <!--  Textition   -->   <script src='http://dimajt.github.io/textition/js/textition.js'></script>
     <!--  bootstrap   -->   <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
     <!--    Angular   -->   <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.4/angular.min.js"></script>
     <script src="https://code.angularjs.org/1.4.4/angular-cookies.js"></script>
@@ -49,29 +50,33 @@
 
 <body ng-app="main_app">
 
-    <nav ng-controller='NavbarCtrl' class="cbp-spmenu cbp-spmenu-vertical cbp-spmenu-left cbp-spmenu-open" id="cbp-spmenu-s1">
-        <h3 ui-sref="home" href="/">What's in your fridge</h3>
+    <div class="wrapper">
+        <nav ng-controller='NavbarCtrl' class="cbp-spmenu cbp-spmenu-vertical cbp-spmenu-left cbp-spmenu-open" id="cbp-spmenu-s1">
+            <h3 ui-sref="home" href="/">What's in your fridge</h3>
 
-        <a ui-sref="login" ng-if="!isAuthenticated()">Login</a>
-        <a ng-if="isAuthenticated()" ng-click="logout()">Logout</a>
+            <a ui-sref="login" ng-if="!isAuthenticated()">Login</a>
+            <a ng-if="isAuthenticated()" ng-click="logout()">Logout</a>
 
-        <a ui-sref="state1">Recipes</a>
-        <a ui-sref="profile" ng-if="isAuthenticated()">My Account</a>
-        <a href="#" ng-if="isAuthenticated()">Chat Room</a>
-        <a href="#">Users List</a>
+            <a ui-sref="state1">Recipes</a>
+            <a ui-sref="profile" ng-if="isAuthenticated()">My Account</a>
+            <a href="#" ng-if="isAuthenticated()">Chat Room</a>
+            <a href="#">Users List</a>
 
 
-        <div class="menuIcon menu-icon active effect1" id="showLeft">
-            <div class="menu-icon-line"></div>
-        </div>
-    </nav>
+            <div class="menuIcon menu-icon active effect1" id="showLeft">
+                <div class="menu-icon-line"></div>
+            </div>
+        </nav>
 
-    <div class="col-md-offset-6" ng-if="isAuthenticated()">Show this div on main only if THERE IS A USER LOGGED IN</div>
-    <div class="col-md-offset-6" ng-if="!isAuthenticated()">Show this div on main only if there is no user logged in</div>
+        <div class="dropShadowText" ng-if="isAuthenticated()">Show this div on main only if THERE IS A USER LOGGED IN</div>
+        <div class="dropShadowText" ng-if="!isAuthenticated()">Show this div on main only if there is no user logged in</div>
 
-    <div class="container">
-        <div ui-view>
-            <div class="col-md-4 col-md-offset-4"></div>
+        <div class="mainContainer">
+            <div class="container-fluid">
+                <div ui-view>
+                    <div class="col-md-4 col-md-offset-4"></div>
+                </div>
+            </div>
         </div>
     </div>
 
