@@ -24,6 +24,20 @@ module.exports = function(grunt) {
               'public/js/libs/satellizer.js'],
         dest: 'public/js/libs/<%= pkg.name %>.js'
       },
+      angular: {
+        src: ['public/js/main_app.js',
+              'public/js/services/AccountService.js',
+              'public/js/services/LoginService.js',
+              'public/js/services/UserService.js',
+              'public/js/controllers/HomeCtrl.js',
+              'public/js/controllers/ProfileCtrl.js',
+              'public/js/controllers/NavbarCtrl.js',
+              'public/js/controllers/LoginCtrl.js',
+              'public/js/controllers/SignUpCtrl.js',
+              'public/js/controllers/RecipesCtrl.js',
+              'public/js/directives/loadingDirective.js'],
+        dest: 'public/js/myAppConcat.js'
+      },
       css: {
         src: ['public/css/font-awesome4.3.0.css',
               'public/css/bootstrap3.2.0.css',
@@ -35,7 +49,7 @@ module.exports = function(grunt) {
       }
     },
     watch: 
-    {   files: ['public/css/**/*.less', 'css/**/*.css'],
+    {   files: ['public/css/**/*.less', 'public/js/**/*.js', 'css/**/*.css'],
         tasks: ['newer:less', 'newer:concat'],
         livereload: {
             options: { livereload: true },

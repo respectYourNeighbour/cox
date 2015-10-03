@@ -23,7 +23,7 @@ angular.module('main_app', ['ui.router','toastr', 'satellizer']).config(function
             controller: 'RecipesCtrl',
             resolve : {
                 ingredients : function($http){
-                    return $http.get('/recipes')
+                    return $http.get('/recipes', {cache: true})
                 }
             }
         })
