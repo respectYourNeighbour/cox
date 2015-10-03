@@ -2,6 +2,16 @@ module.exports = function(grunt) {
   grunt.initConfig({
     pkg: grunt.file.readJSON('package.json'),
     
+    less: {
+      development: {
+        options: {
+          paths: ["public/css/*.css"]
+        },
+        files: {
+          "public/css/style.css": "public/css/*.less"
+        }
+      }
+    },
     concat: {
       js: {
         src: ['public/js/libs/jquery.1.11.1.js',
@@ -23,12 +33,27 @@ module.exports = function(grunt) {
               'public/css/style.css'],
         dest: 'public/css/<%= pkg.name %>.css'
       }
+    },
+    watch: 
+    {   files: ['public/css/**/*.less', 'css/**/*.css'],
+        tasks: ['newer:less', 'newer:concat'],
+        livereload: {
+            options: { livereload: true },
+            files: ['public/**/*.html', 'public/**/*.css','public/**/*.js'],
+        },
     }
   });
 
+  /*Load Packages*/
+  grunt.loadNpmTasks('grunt-contrib-less');
   grunt.loadNpmTasks('grunt-contrib-concat');
+  grunt.loadNpmTasks('grunt-newer');
+  grunt.loadNpmTasks('grunt-contrib-watch');
 
-  grunt.registerTask('default', ['concat']);
+  /*Define a grunt task*/
+  grunt.registerTask('default', ['newer:less','newer:concat']);
+  grunt.registerTask('watchme', ['watch']);
+
 };
 
 /*
