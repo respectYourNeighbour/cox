@@ -17,10 +17,14 @@
     <!--  CSS -->
     <link rel="stylesheet" type="text/css" href="css/cox.css">
 
+    <link rel="stylesheet" href="css/bootstrap-tagsinput.css">
+
 
     <!--  JAVASCRIPTS -->
     <!--  LiveReload  --> <script src="http://localhost:35729/livereload.js"></script>
     <!--  LibrariesJS --> <script src="js/libs/cox.js" type="text/javascript"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/typeahead.js/0.10.4/typeahead.bundle.min.js"></script>
+    <script src="js/bootstrap-tagsinput.js"></script>
 
     
     <!--  ANGULAR_APP -->
@@ -39,7 +43,9 @@
 </div>
 
 <body ng-app="main_app">
-
+    <div class="bs-example">
+            <input type="text" value="Amsterdam,Washington,Sydney,Beijing,Cairo" data-role="tagsinput" />
+          </div>
     <div class="wrapper">
         <nav ng-controller='NavbarCtrl' class="cbp-spmenu cbp-spmenu-vertical cbp-spmenu-left cbp-spmenu-open" id="cbp-spmenu-s1">
             <h3 ui-sref="home" href="/">What's in your fridge</h3>
