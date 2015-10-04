@@ -1,0 +1,4 @@
+Login for:
+- rate
+- chat
+- send msgs
