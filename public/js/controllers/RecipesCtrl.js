@@ -3,5 +3,5 @@ angular.module('main_app').controller('RecipesCtrl', function($scope, UserServic
 
     console.log("ingredients are", ingredients)
 
-    $scope.currentUser = UserService.getCurrentUser();
+    $scope.currentUser = UserService.getMe();
 });

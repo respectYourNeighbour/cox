@@ -1,4 +1,4 @@
-angular.module('main_app').controller('ProfileCtrl', function($scope, AccountService) {
+angular.module('main_app').controller('ProfileCtrl', function($scope,$state, AccountService, toastr) {
     console.log("ProfileCtrl controller");
 
     $scope.getProfile = function() {
@@ -9,6 +9,10 @@ angular.module('main_app').controller('ProfileCtrl', function($scope, AccountSer
             })
             .catch(function(response) {
                 toastr.error(response.data.message, response.status);
+                console.log("response",response)
+                if(response.status == 401) {
+                    $state.go('login');
+                }
             });
     };
 

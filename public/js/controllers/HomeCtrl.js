@@ -8,25 +8,25 @@ angular.module('main_app').controller('HomeCtrl', function($scope, $http) {
 
   var loadTags = [{ "text": "Tag1" },
 
-{ "text": "Tag2" },
+                    { "text": "Tag2" },
 
-{ "text": "Tag3" },
+                    { "text": "Tag3" },
 
-{ "text": "Tag4" },
+                    { "text": "Tag4" },
 
-{ "text": "Tag5" },
+                    { "text": "Tag5" },
 
-{ "text": "Tag6" },
+                    { "text": "Tag6" },
 
-{ "text": "Tag7" },
+                    { "text": "Tag7" },
 
-{ "text": "Tag8" },
+                    { "text": "Tag8" },
 
-{ "text": "Tag9" },
+                    { "text": "Tag9" },
 
-  { "text": "Tag10" }];
+                      { "text": "Tag10" }];
 
-    $scope.loadTags = function(query) {
+    $scope.loadTags = function() {
 
         return loadTags;
 

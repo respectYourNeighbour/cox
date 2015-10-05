@@ -34,8 +34,8 @@
 </div>
 
 
-<tags-input ng-model="tags" add-on-paste="true">
+<tags-input ng-model="tags" add-on-paste="true" add-from-autocomplete-only="true">
 
-<auto-complete source="loadTags($query)"></auto-complete>
+	<auto-complete source="loadTags()" load-on-down-arrow="true" load-on-focus="true" select-first-match="false"></auto-complete>
 
-    </tags-input>
+</tags-input>
