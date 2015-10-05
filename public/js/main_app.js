@@ -1,4 +1,4 @@
-angular.module('main_app', ['ui.router','toastr', 'satellizer']).config(function($stateProvider, $urlRouterProvider, $locationProvider, $authProvider) {
+angular.module('main_app', ['ui.router','toastr', 'satellizer','ngTagsInput']).config(function($stateProvider, $urlRouterProvider, $locationProvider, $authProvider) {
     //console.log("here")
     $urlRouterProvider.otherwise('/');
     $stateProvider

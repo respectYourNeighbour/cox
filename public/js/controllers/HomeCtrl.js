@@ -1,4 +1,38 @@
 angular.module('main_app').controller('HomeCtrl', function($scope, $http) {
+      $scope.tags = [
+    { text: 'Tag1' },
+    { text: 'Tag2' },
+    { text: 'Tag3' }
+  ];
+
+
+  var loadTags = [{ "text": "Tag1" },
+
+{ "text": "Tag2" },
+
+{ "text": "Tag3" },
+
+{ "text": "Tag4" },
+
+{ "text": "Tag5" },
+
+{ "text": "Tag6" },
+
+{ "text": "Tag7" },
+
+{ "text": "Tag8" },
+
+{ "text": "Tag9" },
+
+  { "text": "Tag10" }];
+
+   $scope.loadTags = function(query) {
+
+return loadTags;
+
+  };
+
+
     $http.jsonp('https://api.github.com/repos/sahat/satellizer?callback=JSON_CALLBACK')
         .success(function(data) {
             if (data) {
