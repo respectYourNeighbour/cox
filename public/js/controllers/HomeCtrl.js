@@ -26,11 +26,11 @@ angular.module('main_app').controller('HomeCtrl', function($scope, $http) {
 
   { "text": "Tag10" }];
 
-   $scope.loadTags = function(query) {
+    $scope.loadTags = function(query) {
 
-return loadTags;
+        return loadTags;
 
-  };
+    };
 
 
     $http.jsonp('https://api.github.com/repos/sahat/satellizer?callback=JSON_CALLBACK')
