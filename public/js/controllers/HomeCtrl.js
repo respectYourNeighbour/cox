@@ -39,6 +39,10 @@ angular.module('main_app').controller('HomeCtrl', function($scope, $http, ingred
 
     };
 
+    $scope.showMore = function() {
+        console.log("showMore clicked")
+    }
+
     $scope.searchRecipes = function() {
         console.log("searchRecipes clicked")
         var tagsString = $scope.tags.map(function(tag) {
@@ -53,6 +57,14 @@ angular.module('main_app').controller('HomeCtrl', function($scope, $http, ingred
                 toastr.error("No recipes found");
                 $scope.recipes = data;
             }
+            /*
+
+
+                AICI AR TREBUI CA DESCRIEREA FIECAREI RETETE SA FIE LIMITATA LA 100 CARACTERE. DACA E PESTE 100 CARACTERE,
+                SA APARA SHOW MORE. CAND DAI CLICK PE SHOW MORE SA TE DUCA PE PAGINA CU RETETA SAU SA ITI AFISEZE INTREAGA DESCRIERE
+                http://viralpatel.net/blogs/dynamically-shortened-text-show-more-link-jquery/
+
+            */
         }).error(function(data){
             console.log("err data",data)
         });

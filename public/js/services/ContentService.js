@@ -7,4 +7,8 @@ angular.module('main_app').service('ContentService', function($http, $rootScope,
         service.getRecipes = function(ingredients) {
         	return $http.get('/recipes', {params : {ingredientsList : ingredients}})
         }
+        service.getRecipe = function(ID) {
+        	console.log("getRecipe by ID")
+        	return $http.get('/recipe/' + ID);
+        }
 })

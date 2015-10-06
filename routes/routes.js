@@ -11,6 +11,7 @@ module.exports = function(app, db) {
     app.post('/auth/signup', authenticationHandler.signup);
     app.get('/getIngredients', contentHandler.returnAllIngredients);
     app.get('/recipes', contentHandler.getRecipes);
+    app.get('/recipe/:ID',contentHandler.getRecipeByID)
 
     app.use('/api',authenticationHandler.ensureAuthenticated)
     app.get('/api/me', contentHandler.myProfile)

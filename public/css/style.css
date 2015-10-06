@@ -236,3 +236,11 @@ body .effect1:before {
 .cf {
   *zoom: 1;
 }
+
+
+.recipe_indicatii{
+  font-size: 16px;
+  line-height: 16px;
+  height: 32px;
+  overflow: hidden;
+}
