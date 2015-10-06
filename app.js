@@ -10,7 +10,7 @@ var express = require('express'),
 	mongoose = require('mongoose'),
 	config = require('./config'),
 	port = 3000;
-
+	//testing commit in git
 
 	mongoose.connect('mongodb://127.0.0.1/fridge');
     var db = mongoose.connection;
