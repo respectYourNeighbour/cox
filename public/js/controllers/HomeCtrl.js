@@ -1,12 +1,19 @@
-angular.module('main_app').controller('HomeCtrl', function($scope, $http) {
+angular.module('main_app').controller('HomeCtrl', function($scope, $http, ingredients, ContentService, toastr) {
       $scope.tags = [
     { text: 'Tag1' },
     { text: 'Tag2' },
     { text: 'Tag3' }
   ];
+  var loadTags = [];
+  console.log("loadTags1",loadTags)
+  console.log("ingredients",ingredients)
+  for (var i = 0; i < ingredients.data.length; i++) {
+      //console.log("data[]",ingredients.data[i])
+      loadTags[i] = {"text" : ingredients.data[i].nume}
+  };
+  console.log("loadTags",loadTags)
 
-
-  var loadTags = [{ "text": "Tag1" },
+  /*var loadTags = [{ "text": "Tag1" },
 
                     { "text": "Tag2" },
 
@@ -24,7 +31,7 @@ angular.module('main_app').controller('HomeCtrl', function($scope, $http) {
 
                     { "text": "Tag9" },
 
-                      { "text": "Tag10" }];
+                      { "text": "Tag10" }];*/
 
     $scope.loadTags = function() {
 
@@ -32,8 +39,28 @@ angular.module('main_app').controller('HomeCtrl', function($scope, $http) {
 
     };
 
+    $scope.searchRecipes = function() {
+        console.log("searchRecipes clicked")
+        var tagsString = $scope.tags.map(function(tag) {
+            console.log("tag",tag)
+            return tag.text;
+        })
+        ContentService.getRecipes(tagsString).success(function(data){
+            console.log("success data",data);
+            if(data.length > 0){
+                $scope.recipes = data;
+            } else {
+                toastr.error("No recipes found");
+                $scope.recipes = data;
+            }
+        }).error(function(data){
+            console.log("err data",data)
+        });
+        console.log("tagsString",tagsString)
+    }
 
-    $http.jsonp('https://api.github.com/repos/sahat/satellizer?callback=JSON_CALLBACK')
+
+    /*$http.jsonp('https://api.github.com/repos/sahat/satellizer?callback=JSON_CALLBACK')
         .success(function(data) {
             if (data) {
                 if (data.data.stargazers_count) {
@@ -46,5 +73,5 @@ angular.module('main_app').controller('HomeCtrl', function($scope, $http) {
                     $scope.issues = data.data.open_issues;
                 }
             }
-        });
+        });*/
 });

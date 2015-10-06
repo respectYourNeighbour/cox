@@ -5,7 +5,12 @@ angular.module('main_app', ['ui.router','toastr', 'satellizer','ngTagsInput']).c
         .state('home', {
             url: '/',
             controller:'HomeCtrl',
-            templateUrl:'partials/home.html'
+            templateUrl:'partials/home.html',
+            resolve : {
+                ingredients : function(ContentService){
+                    return ContentService.getIngredients();
+                }
+            }
         })
         .state('login', {
             url: '/authentication',

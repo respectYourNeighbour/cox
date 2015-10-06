@@ -39,3 +39,13 @@
 	<auto-complete source="loadTags()" load-on-down-arrow="true" load-on-focus="true" select-first-match="false"></auto-complete>
 
 </tags-input>
+<p>Model : {{tags}}</p>
+<button ng-click="searchRecipes()">Search</button>
+
+<div class="row">
+	<div id="recipe-list">
+	    <ul class="ingredients-list">
+			<li ng-repeat="recipe in recipes">{{recipe.nume}}</li>
+		</ul>
+	</div>
+</div>
