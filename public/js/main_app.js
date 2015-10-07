@@ -49,13 +49,13 @@ angular.module('main_app', ['ui.router','toastr', 'satellizer','ngTagsInput']).c
         .state('single_recipe', {
             url: '/recipe/:ID',
             templateUrl: 'partials/single_recipe.html',
-            controller: 'SingleRecipeCtrl',
+            controller: 'SingleRecipeCtrl'/*,
             resolve : {
                 dataForRecipe : function($http, $stateParams, ContentService) {
                     console.log("$stateParams",$stateParams)
                     return ContentService.getRecipe($stateParams.ID)
                 }
-            }
+            }*/
         })
     $locationProvider.html5Mode({
 	  enabled: true,

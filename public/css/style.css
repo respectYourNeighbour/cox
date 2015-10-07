@@ -236,11 +236,70 @@ body .effect1:before {
 .cf {
   *zoom: 1;
 }
-
-
-.recipe_indicatii{
-  font-size: 16px;
-  line-height: 16px;
-  height: 32px;
-  overflow: hidden;
+.outsideRecepyWrapper {
+  width: 300px;
+  height: 500px;
+  background-color: #ffffff;
+  border-radius: 3px;
+  position: relative;
+  position: absolute;
+  /* border-radius: 15px; */
+  border: 5px solid #ffffff;
+  /* box-shadow: 1px 1px 4px rgba(0,0,0,.3); */
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+.outsideRecepyWrapper header {
+  background: #fff;
+  display: block;
+  padding: 30px 30px;
+  text-align: center;
+}
+.outsideRecepyWrapper header h2 {
+  line-height: 1;
+  padding: 0;
+  margin: 0;
+  font-family: "roboto", sans-serif;
+  font-weight: 600;
+  font-size: 20px;
+  color: #556078;
+  -webkit-font-smoothing: antialiased;
+}
+.outsideRecepyWrapper .insideRecepyWrapper {
+  width: 290px;
+  height: 490px;
+  margin: 0 auto;
+  box-shadow: 0px 0px 3px rgba(0, 0, 0, 0.3);
+  border-radius: 0px 0px 5px 5px;
+}
+.recepyBody {
+  width: 100%;
+  height: 410px;
+  /* background-color: skyblue; */
+  background-color: #26c6da;
+  position: relative;
+  border-radius: 0px 0px 5px 5px;
+}
+.picture {
+  position: absolute;
+}
+.picture .likeButton {
+  position: absolute;
+  bottom: 0px;
+  right: 0px;
+  width: 100px;
+  height: 50px;
+  background-color: tomato;
+  text-align: center;
+  line-height: 50px;
+  color: #fff;
+  font-size: 1.4em;
+  font-family: 'Lobster', cursive;
+  cursor: pointer;
+  opacity: 0.8;
+  -webkit-transition: all 0.3s ease;
+  -moz-transition: all 0.3s ease;
+  transition: all 0.3s ease;
+}
+.picture .likeButton:hover {
+  opacity: 1;
 }
