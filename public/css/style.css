@@ -251,7 +251,7 @@ body .effect1:before {
 /*Recepy*/
 .outsideRecepyWrapper {
   width: 300px;
-  height: 600px;
+  height: auto;
   background-color: #ffffff;
   border-radius: 3px;
   position: relative;
@@ -264,7 +264,7 @@ body .effect1:before {
   background: #fff;
   /*#ffaf50*/
   display: block;
-  padding: 30px 30px;
+  padding: 15px 15px;
   text-align: center;
 }
 .outsideRecepyWrapper header h2 {
@@ -280,7 +280,7 @@ body .effect1:before {
 }
 .outsideRecepyWrapper .insideRecepyWrapper {
   width: 290px;
-  height: 590px;
+  height: auto;
   margin: 0 auto;
   box-shadow: 0px 0px 3px rgba(0, 0, 0, 0.3);
   border-radius: 0px 0px 5px 5px;
@@ -301,7 +301,7 @@ body .effect1:before {
   margin-left: -10px;
   margin-top: 5px;
   position: absolute;
-  top: 75px;
+  top: 45px;
   width: 0;
   z-index: 2;
 }
@@ -321,12 +321,13 @@ body .effect1:before {
   position: absolute;
   bottom: 0px;
   right: 0px;
-  width: 100px;
-  height: 50px;
+  width: 70px;
+  height: 40px;
   background-color: #7cc8b5;
   /*tomato*/
-  text-align: center;
-  line-height: 50px;
+  text-align: right;
+  padding-right: 7px;
+  line-height: 40px;
   color: #fff;
   font-size: 1.4em;
   font-family: 'Lobster', cursive;
@@ -337,9 +338,17 @@ body .effect1:before {
   transition: all 0.2s ease;
   border-radius: 2px 0 0 0;
 }
+.outsideRecepyWrapper .insideRecepyWrapper .recepyBody .picture .likeButton .stars {
+  position: absolute;
+  right: 85px;
+  display: none;
+}
 .outsideRecepyWrapper .insideRecepyWrapper .recepyBody .picture .likeButton:hover {
   opacity: 1;
-  width: 105px;
+  width: 175px;
+}
+.outsideRecepyWrapper .insideRecepyWrapper .recepyBody .picture .likeButton:hover .stars {
+  display: inline;
 }
 .outsideRecepyWrapper .insideRecepyWrapper .recepyBody .preparationTime {
   position: absolute;

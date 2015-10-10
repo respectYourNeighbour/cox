@@ -30,4 +30,6 @@ angular.module('main_app').controller('NavbarCtrl', function($scope, $state, Log
         return LoginService.isAuthenticated();
     };
 
+    $('[data-toggle="tooltip"]').tooltip(); 
+
 });
