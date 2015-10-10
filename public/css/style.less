@@ -7,7 +7,16 @@
 @import url(https://fonts.googleapis.com/css?family=Bevan);
 @import url(https://fonts.googleapis.com/css?family=Vollkorn);
 @import url(https://fonts.googleapis.com/css?family=Lato);
+@import url(http://fonts.googleapis.com/css?family=Droid+Sans);
 
+.noselect {
+    -webkit-touch-callout: none;
+    -webkit-user-select: none;
+    -khtml-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+}
 
 body{
 	background-color: @bodyBackgroundColor;
@@ -31,7 +40,7 @@ body{
 		-moz-transition: all 0.3s ease;
 		transition: all 0.3s ease;
 		h3 {
-			color: #26c6da;
+			color: #fff;/*#26c6da*/
 			font-size: 1.7em;
 			padding: 20px;
 			margin: 0;
@@ -45,6 +54,9 @@ body{
 			font-size: 1.1em;
 			font-weight: 300;
 			font-family: 'Lato', sans-serif;
+			-webkit-transition: all 0.3s ease;
+			-moz-transition: all 0.3s ease;
+			transition: all 0.3s ease;
 		}
 		a:hover {
 			background: #54789a;
@@ -255,83 +267,221 @@ body{
   *zoom: 1;
 }
 
+
+/*Recepy*/
 .outsideRecepyWrapper{
 	width: 300px;
-	height: 500px;
+	height: 600px;
 	background-color: rgba(255,255,255, 1);
 	border-radius: 3px;
     position: relative;
     position: absolute;
 
-
-    /* border-radius: 15px; */
     border: 5px solid rgba(255,255,255,1);
     /* box-shadow: 1px 1px 4px rgba(0,0,0,.3); */
     box-shadow:  0 2px 5px rgba(0,0,0,0.1);
 	
 	header {
-   		background: #fff;
+   		background: #fff; /*#ffaf50*/
    		display: block;
    		padding: 30px 30px;
    		text-align: center;
-    h2 {
-      	line-height: 1;
-      	padding: 0;
-      	margin: 0;
-      	font-family: "roboto", sans-serif;
-      	font-weight: 600;
-      	font-size: 20px;
-      	color: lighten(#4a5469,5%);
-      	-webkit-font-smoothing: antialiased;
-    }
-  }
-  .insideRecepyWrapper{
-  	width: 290px;
-  	height: 490px;
-  	margin: 0 auto;
-  	box-shadow: 0px 0px 3px rgba(0,0,0,.3);
-  	border-radius: 0px 0px 5px 5px;
-  }
+	    h2 {
+	      	line-height: 1;
+	      	padding: 0;
+	      	margin: 0;
+	      	font-family: "roboto", sans-serif;
+	      	font-weight: 600;
+	      	font-size: 20px;
+	      	color: tomato; /*lighten(#4a5469,5%);*/
+	      	-webkit-font-smoothing: antialiased;
+	    }
+  	}
+
+  	.insideRecepyWrapper{
+	  	width: 290px;
+	  	height: 590px;
+	  	margin: 0 auto;
+	  	box-shadow: 0px 0px 3px rgba(0,0,0,.3);
+	  	border-radius: 0px 0px 5px 5px;
+
+		.recepyTitle{
+			border-color: #fff;
+		}
+		.recepyTitle:before{
+			border-bottom-color: #fff;
+		    border-left: 10px solid transparent;
+		    border-right: 10px solid transparent;
+		    border-top-color: inherit;
+		    border-top-style: solid;
+		    border-top-width: 10px;
+		    content: "";
+		    height: 0;
+		    left: 50%;
+		    margin-left: -10px;
+		    margin-top: 5px;
+		    position: absolute;
+		    top: 75px;
+		    width: 0;
+		    z-index: 2;
+		}
+
+		.recepyBody{
+			width: 100%;
+			height: 510px;
+			/* background-color: skyblue; */
+			background-color: tomato; /*#26c6da*/
+			position: relative;
+			border-radius: 0px 0px 5px 5px;
+			.picture{
+				position: absolute;
+				.likeButton{
+					position: absolute;
+					bottom: 0px;
+					right: 0px;
+					width: 100px;
+					height: 50px;
+					background-color: #7cc8b5; /*tomato*/
+					text-align: center;
+					line-height: 50px;
+					color: #fff;
+					font-size: 1.4em;
+					font-family: @headingFont;
+					cursor: pointer;
+					opacity: 0.8;
+					-webkit-transition: all 0.2s ease;
+					-moz-transition: all 0.2s ease;
+					transition: all 0.2s ease;
+					border-radius: 2px 0 0 0;
+				}
+				.likeButton:hover{
+					opacity: 1;
+					width: 105px;
+				}
+			}
+
+			.preparationTime{
+		  		position: absolute;
+		  		width: 100%;
+		  		height: 40px;
+		  		z-index: 2;
+		  		top: 200px;
+		  		background-color: tomato;
+		  		text-align: center;
+		  		line-height: 40px;
+		  		font-size: 1.3em;
+		  		color: #fff;
+		  		.fa{
+		  			font-size: 2em;
+		  			vertical-align: middle;
+		  			height: 40px;
+		  		}
+		  	}
+
+		  	.ingredientsWrapper{
+				width: 100%;
+				height: 100px;
+				position: absolute;
+				top: 240px;
+				border-bottom: 1px solid #fff;
+				background-color: #ffaf50; /*#82DACA*/
+				.ingredientContent{
+					width: 140px;
+					float: left;
+					ul{
+						padding-left: 10px;
+					}
+					ul li{
+						font-family: 'Droid Sans', sans-serif;
+						line-height: 1.4;
+				    	font-size: 16px;
+				    	list-style-type: none;
+					    span{
+					    	padding-right: 0.4rem;
+					    }
+					}
+				}
+			}
+			.detailsWrapper{
+				width: 100%;
+			    background-color: tomato;
+			    height: 170px;
+			    position: absolute;
+			    top: 340px;
+			    border-radius: 0px 0px 5px 5px;
+			    .likesCount{
+			    	height: 100%;
+    				width: 50%;
+    				background-color: #82DACA;
+    				float: left;
+    				border-radius: 0px 0px 0px 5px;
+    				.price{
+    					text-align: center;
+    					top: 20px;
+    					font-size: 2em;
+    					color: #fff;
+    					position: relative;
+    					span{
+    						font-size: 6rem;
+    						letter-spacing: 8px;
+    						font-weight: bold;
+    					}
+    				}
+    				.likesCount-footer{
+    					text-align: center;
+    					position: relative;
+    					top: 35px;
+    					height: 40px;
+    					width: 100%;
+    					line-height: 40px;
+    					background-color: tomato;
+    					border-right: 1px solid #fff;
+    					border-radius: 0px 0px 0px 5px;
+    					p{
+    						color: #fff;
+    					}
+    				}
+			    }
+			    .accuracyCount{
+			    	height: 100%;
+    				width: 50%;
+    				background-color: #ffaf50;
+    				float: left;
+    				border-radius: 0px 0px 5px 0px;
+    				.price{
+    					text-align: center;
+    					top: 20px;
+    					font-size: 2em;
+    					color: #fff;
+    					position: relative;
+    					span{
+    						font-size: 6rem;
+    						letter-spacing: 8px;
+    						font-weight: bold;
+    					}
+    				}
+    				.accuracyCount-footer{
+    					text-align: center;
+    					position: relative;
+    					top: 35px;
+    					height: 40px;
+    					width: 100%;
+    					line-height: 40px;
+    					background-color: tomato;
+    					border-radius: 0px 0px 5px 0px;
+    					p{
+    						color: #fff;
+    					}
+    				}
+			    }
+			}
+
+		}
+
+  	}
+
+  	
 }
-.recepyBody{
-	width: 100%;
-	height: 410px;
-	/* background-color: skyblue; */
-	background-color: #26c6da;
-	position: relative;
-	border-radius: 0px 0px 5px 5px;
-}
-.picture{
-	position: absolute;
-	.likeButton{
-		position: absolute;
-		bottom: 0px;
-		right: 0px;
-		width: 100px;
-		height: 50px;
-		background-color: tomato;
-		text-align: center;
-		line-height: 50px;
-		color: #fff;
-		font-size: 1.4em;
-		font-family: @headingFont;
-		cursor: pointer;
-		opacity: 0.8;
-		-webkit-transition: all 0.3s ease;
-		-moz-transition: all 0.3s ease;
-		transition: all 0.3s ease;
-	}
-	.likeButton:hover{
-		opacity: 1;
-	}
-}
-.ingredientsWrapper{
-	width: 100%;
-	height: 100px;
-	position: absolute;
-	top: 200px;
-	border-bottom: 1px solid #eee;
-}
-.ingredientContent{
-	float: left;
-}
+
+
+

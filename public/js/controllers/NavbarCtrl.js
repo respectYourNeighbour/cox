@@ -29,4 +29,5 @@ angular.module('main_app').controller('NavbarCtrl', function($scope, $state, Log
         //console.log("NavbarCtrl isAuthenticated",LoginService.isAuthenticated())
         return LoginService.isAuthenticated();
     };
+
 });
