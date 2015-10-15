@@ -75,12 +75,15 @@ angular.module('main_app', ['ui.router','toastr', 'satellizer','ngTagsInput']).c
         }
         return deferred.promise;
     }
-    function skipIfLoggedIn($q, $auth) {
+    function skipIfLoggedIn($q, $auth, LoginService) {
         console.log("skipIfLoggedIn")
         var deferred = $q.defer();
+        console.log("deferred",deferred)
         if (LoginService.isAuthenticated()) {
+            console.log("user logged in")
             deferred.reject();
         } else {
+            console.log("user not logged in");
             deferred.resolve();
         }
         return deferred.promise;

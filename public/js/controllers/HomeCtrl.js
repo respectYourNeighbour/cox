@@ -13,25 +13,39 @@ angular.module('main_app').controller('HomeCtrl', function($scope, $http, ingred
   };
   console.log("loadTags",loadTags)
 
-  /*var loadTags = [{ "text": "Tag1" },
 
-                    { "text": "Tag2" },
-
-                    { "text": "Tag3" },
-
-                    { "text": "Tag4" },
-
-                    { "text": "Tag5" },
-
-                    { "text": "Tag6" },
-
-                    { "text": "Tag7" },
-
-                    { "text": "Tag8" },
-
-                    { "text": "Tag9" },
-
-                      { "text": "Tag10" }];*/
+  var recipesArray = [
+        {
+            "nume" : "Ciorba Mexicană",
+            "timp_preparare" : "42 minute",
+            "ingrediente" : ["ingredient 1", "ingredient 2","ingredient 1", "ingredient 2",
+                            "ingredient 1", "ingredient 2","ingredient 1", "ingredient 2"],
+            "number_likes" : "pie",
+            "accuracy" : "80",
+            "ingrediente_corecte" : "2/4 ingrediente",
+            "image_link":"images/image1.jpg"
+        },
+        {
+            "nume" : "Colţunaşi la cuptor",
+            "timp_preparare" : "23 minute",
+            "ingrediente" : ["ingredient 1", "ingredient 2","ingredient 1", "ingredient 2",
+                            "ingredient 1", "ingredient 2","ingredient 1", "ingredient 2"],
+            "number_likes" : "pie",
+            "accuracy" : "90",
+            "ingrediente_corecte" : "3/4 ingrediente",
+            "image_link":"images/image2.jpg"
+        },
+        {
+            "nume" : "Friptură de vită",
+            "timp_preparare" : "12 minute",
+            "ingrediente" : ["ingredient 1", "ingredient 2","ingredient 1", "ingredient 2",
+                            "ingredient 1", "ingredient 2","ingredient 1", "ingredient 2"],
+            "number_likes" : "pie",
+            "accuracy" : "90",
+            "ingrediente_corecte" : "3/4 ingrediente",
+            "image_link":"images/image3.jpg"
+        },
+  ]
 
     $scope.loadTags = function() {
 
@@ -51,12 +65,16 @@ angular.module('main_app').controller('HomeCtrl', function($scope, $http, ingred
         })
         ContentService.getRecipes(tagsString).success(function(data){
             console.log("success data",data);
+            /*
+            THIS HAS BEEN COMENTED FOR TESTING PURPOSES
             if(data.length > 0){
                 $scope.recipes = data;
             } else {
                 toastr.error("No recipes found");
                 $scope.recipes = data;
             }
+            */
+            $scope.recipes = recipesArray;
             /*
 
 
