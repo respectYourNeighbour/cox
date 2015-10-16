@@ -1,4 +1,4 @@
-angular.module('main_app').controller('HomeCtrl', function($scope, $http, ingredients, ContentService, toastr) {
+angular.module('main_app').controller('HomeCtrl', function($scope, $http, ingredients, LoginService, ContentService, toastr) {
       $scope.tags = [
     { text: 'Tag1' },
     { text: 'Tag2' },
@@ -12,10 +12,6 @@ angular.module('main_app').controller('HomeCtrl', function($scope, $http, ingred
       loadTags[i] = {"text" : ingredients.data[i].nume}
   };
   console.log("loadTags",loadTags)
-
-$scope.labels = ["Download Sales", "In-Store Sales", "Mail-Order Sales"];
-  $scope.data = [300, 500, 100];
-
 
   var recipesArray = [
         {
@@ -91,6 +87,11 @@ $scope.labels = ["Download Sales", "In-Store Sales", "Mail-Order Sales"];
         });
         console.log("tagsString",tagsString)
     }
+
+    $scope.isAuthenticated = function() {
+        //console.log("NavbarCtrl isAuthenticated",LoginService.isAuthenticated())
+        return LoginService.isAuthenticated();
+    };
 
 
     /*$http.jsonp('https://api.github.com/repos/sahat/satellizer?callback=JSON_CALLBACK')

@@ -9,7 +9,6 @@
 					<p>
 						<a class="btn btn-primary" href="#">View details »</a>
 					</p>
-                    <canvas id="pie" class="chart chart-pie" chart-data="data" chart-labels="labels"></canvas>
 				</div>
 				<div class="col-sm-6">
 					<h2>Heading</h2>
@@ -55,7 +54,7 @@
                         </div>
                         <div class="recepyBody">
                             <div class="picture">
-                                <div class="likeButton">
+                                <div class="likeButton" ng-if="isAuthenticated()">
                                     <span class="stars">
                                         <span data-toggle="tooltip" title="Not really..">
                                             <i class="fa fa-star-o"></i>
@@ -72,7 +71,7 @@
                                 <img ng-src={{recipe.image_link}} alt="Mountain View" style="width:290px;height:200px;">
                             </div>
                             <div class="preparationTime">
-                                <span><i class="fa fa-clock-o"></i>{{recipe.timp_preparare}}</span>
+                                <span><i class="fa fa-clock-o"></i> {{recipe.timp_preparare}}</span>
                             </div>
                             <div class="ingredientsWrapper">
                                 <div class="ingredientContent ingredients">
@@ -93,14 +92,7 @@
                                 </div>
                             </div>
                             <div class="detailsWrapper">
-                                <div class="likesCount">
-                                    <p class="price">
-                                        <span>{{recipe.number_likes}}</span>
-                                    </p>
-                                    <div class="likesCount-footer">
-                                        <p>likes</p>
-                                    </div>
-                                </div>
+
                                 <div class="accuracyCount">
                                     <p class="price">
                                         <span>{{recipe.accuracy}}</span>

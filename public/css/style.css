@@ -434,7 +434,7 @@ body .effect1:before {
 }
 .outsideRecepyWrapper .insideRecepyWrapper .recepyBody .detailsWrapper .accuracyCount {
   height: 100%;
-  width: 50%;
+  width: 100%;
   background-color: #ffaf50;
   float: left;
   border-radius: 0px 0px 5px 0px;
