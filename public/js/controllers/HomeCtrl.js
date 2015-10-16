@@ -13,6 +13,9 @@ angular.module('main_app').controller('HomeCtrl', function($scope, $http, ingred
   };
   console.log("loadTags",loadTags)
 
+$scope.labels = ["Download Sales", "In-Store Sales", "Mail-Order Sales"];
+  $scope.data = [300, 500, 100];
+
 
   var recipesArray = [
         {
