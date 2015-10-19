@@ -28,75 +28,8 @@ body h3 {
 body header {
   background-color: #222211;
 }
-body .cbp-spmenu {
-  background: #26c6da;
-  position: fixed;
-  /* Transitions */
-  -webkit-transition: all 0.3s ease;
-  -moz-transition: all 0.3s ease;
-  transition: all 0.3s ease;
-}
-body .cbp-spmenu h3 {
-  color: #fff;
-  /*#26c6da*/
-  font-size: 1.7em;
-  padding: 20px;
-  margin: 0;
-  font-weight: 300;
-  background: #3c5674;
-  border-bottom: 1px solid #4b6c8b;
-}
-body .cbp-spmenu a {
-  display: block;
-  color: #fff;
-  font-size: 1.1em;
-  font-weight: 300;
-  font-family: 'Lato', sans-serif;
-  -webkit-transition: all 0.3s ease;
-  -moz-transition: all 0.3s ease;
-  transition: all 0.3s ease;
-}
-body .cbp-spmenu a:hover {
-  background: #54789a;
-  text-decoration: none;
-}
-body .cbp-spmenu a.selected {
-  background-color: #3d5b77;
-  border: 1px solid #2f4c67;
-  border-left: 4px solid #07a9e1;
-  -webkit-transition: all ease 0.3s;
-  -moz-transition: all ease 0.3s;
-  -o-transition: all ease 0.3s;
-  transition: all ease 0.3s;
-}
-body .cbp-spmenu-vertical {
-  width: 240px;
-  height: 100%;
-  top: 0;
-  z-index: 1000;
-}
-body .cbp-spmenu-vertical a {
-  padding: 1em;
-  border-bottom: 1px solid #4b6c8b;
-  text-decoration: none;
-}
-body .cbp-spmenu-left {
-  left: -240px;
-}
-body .cbp-spmenu-open {
-  left: 0px;
-}
-body .menu-icon {
-  margin: auto;
-  width: 40px;
-  left: 50px;
-  float: right;
-  position: absolute;
-  left: 260px;
-  top: 20px;
-  cursor: pointer;
-  height: 33px;
-}
+
+
 body .menu-icon .menu-icon-line {
   background: #537797;
   content: '';
@@ -463,4 +396,165 @@ body .effect1:before {
 }
 .outsideRecepyWrapper .insideRecepyWrapper .recepyBody .detailsWrapper .accuracyCount .accuracyCount-footer p {
   color: #fff;
+}
+
+
+.vertical-center {
+  min-height: 100%;  /* Fallback for vh unit */
+  min-height: 100vh; /* You might also want to use
+                        'height' property instead.
+
+                        Note that for percentage values of
+                        'height' or 'min-height' properties,
+                        the 'height' of the parent element
+                        should be specified explicitly.
+
+                        In this case the parent of '.vertical-center'
+                        is the <body> element */
+
+  /* Make it a flex container */
+  display: -webkit-box;
+  display: -moz-box;
+  display: -ms-flexbox;
+  display: -webkit-flex;
+  display: flex;
+
+  /* Align the bootstrap's container vertically */
+    -webkit-box-align : center;
+  -webkit-align-items : center;
+       -moz-box-align : center;
+       -ms-flex-align : center;
+          align-items : center;
+
+  /* In legacy web browsers such as Firefox 9
+     we need to specify the width of the flex container */
+  width: 100%;
+
+  /* Also 'margin: 0 auto' doesn't have any effect on flex items in such web browsers
+     hence the bootstrap's container won't be aligned to the center anymore.
+
+     Therefore, we should use the following declarations to get it centered again */
+         -webkit-box-pack : center;
+            -moz-box-pack : center;
+            -ms-flex-pack : center;
+  -webkit-justify-content : center;
+          justify-content : center;
+}
+
+
+
+
+
+.cbp-spmenu h3 {
+  color: #fff;
+  /*#26c6da*/
+  font-size: 1.7em;
+  padding: 20px;
+  margin: 0;
+  font-weight: 300;
+  background: #3c5674;
+  border-bottom: 1px solid #4b6c8b;
+}
+.cbp-spmenu a {
+  display: block;
+  color: #fff;
+  font-size: 1.1em;
+  font-weight: 300;
+  font-family: 'Lato', sans-serif;
+  padding: 1em;
+  border-bottom: 1px solid #4b6c8b;
+  text-decoration: none;
+  -webkit-transition: all 0.3s ease;
+  -moz-transition: all 0.3s ease;
+  transition: all 0.3s ease;
+}
+.cbp-spmenu a:hover {
+  background: #54789a;
+  text-decoration: none;
+}
+.cbp-spmenu a.selected {
+  background-color: #3d5b77;
+  border: 1px solid #2f4c67;
+  border-left: 4px solid #07a9e1;
+  -webkit-transition: all ease 0.3s;
+  -moz-transition: all ease 0.3s;
+  -o-transition: all ease 0.3s;
+  transition: all ease 0.3s;
+}
+
+
+.nav_trigger {
+    cursor: pointer;
+    display: inline-block;
+    font-size: 26px;
+    margin: 5px 20px 0 50px;
+    float: left;
+    width: 40px;
+  position: absolute;
+  height: 33px;
+}
+body.show_sidebar .nav_trigger {
+    margin-right: 5px;
+}
+#push_sidebar {
+    background: #31373d;
+    border-left: 1px solid #ddd;
+    bottom: 0;
+    color: #95A7B7;
+    right: 100%;
+    overflow: auto;
+    position: fixed;
+    top: 0;
+    width: 25%;
+    -webkit-transition: all .5s ease;
+    -moz-transition: all .5s ease;
+    -ms-transition: all .5s ease;
+    -o-transition: all .5s ease;
+    transition: all .5s ease;
+}
+body.show_sidebar #push_sidebar {
+    right: 75%;
+}
+#wrapper {
+    margin-right: 0;
+    min-height: 1000px;
+    overflow: hidden;
+    width: 100%;
+    -webkit-transition: all .5s ease;
+    -moz-transition: all .5s ease;
+    -ms-transition: all .5s ease;
+    -o-transition: all .5s ease;
+    transition: all .5s ease;
+}
+body.show_sidebar #wrapper {
+    margin-left: 25%;
+    width: 75%;
+}
+@media (max-width: 767px) {
+    .nav_trigger {
+        font-size: 19px;
+        margin: 5px 5px 0 20px;
+    }
+    #push_sidebar {
+        width: 45%;
+    }
+    body.show_sidebar #push_sidebar {
+        right: 55%;
+    }
+    body.show_sidebar #wrapper {
+        margin-left: 45%;
+        width: 55%;
+    }
+}
+@media (min-width: 992px) {
+    #push_sidebar {
+        width: 15%;
+    }
+    body.show_sidebar #push_sidebar {
+        right: 85%;
+    }
+    body.show_sidebar #wrapper {
+        margin-left: 15%;
+        width: 80%;
+    }
 }

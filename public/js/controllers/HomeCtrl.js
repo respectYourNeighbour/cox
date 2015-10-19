@@ -44,6 +44,36 @@ angular.module('main_app').controller('HomeCtrl', function($scope, $http, ingred
             "ingrediente_corecte" : "3/4 ingrediente",
             "image_link":"images/image3.jpg"
         },
+        {
+            "nume" : "Friptură de vită",
+            "timp_preparare" : "12 minute",
+            "ingrediente" : ["ingredient 1", "ingredient 2","ingredient 1", "ingredient 2",
+                            "ingredient 1", "ingredient 2","ingredient 1", "ingredient 2"],
+            "number_likes" : "pie",
+            "accuracy" : "90",
+            "ingrediente_corecte" : "3/4 ingrediente",
+            "image_link":"images/image3.jpg"
+        },
+        {
+            "nume" : "Friptură de vită",
+            "timp_preparare" : "12 minute",
+            "ingrediente" : ["ingredient 1", "ingredient 2","ingredient 1", "ingredient 2",
+                            "ingredient 1", "ingredient 2","ingredient 1", "ingredient 2"],
+            "number_likes" : "pie",
+            "accuracy" : "90",
+            "ingrediente_corecte" : "3/4 ingrediente",
+            "image_link":"images/image3.jpg"
+        },
+        {
+            "nume" : "Friptură de vită",
+            "timp_preparare" : "12 minute",
+            "ingrediente" : ["ingredient 1", "ingredient 2","ingredient 1", "ingredient 2",
+                            "ingredient 1", "ingredient 2","ingredient 1", "ingredient 2"],
+            "number_likes" : "pie",
+            "accuracy" : "90",
+            "ingrediente_corecte" : "3/4 ingrediente",
+            "image_link":"images/image3.jpg"
+        },
   ]
 
     $scope.loadTags = function() {

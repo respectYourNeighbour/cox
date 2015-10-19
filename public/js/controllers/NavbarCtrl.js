@@ -13,8 +13,14 @@ angular.module('main_app').controller('NavbarCtrl', function($scope, $state, Log
     showLeft.onclick = function() {
         $(this).toggleClass("active");
         $(this).toggleClass("effect1");
-        $("#cbp-spmenu-s1").toggleClass("cbp-spmenu-open")
+        $("body").toggleClass("show_sidebar");
     };
+
+    /*$("#showLeftPush").on("click", function() {
+        console.log(">>>>>>>>>>>>>>>click")
+        $('body').toggleClass("cbp-spmenu-push-toright");
+        $("#cbp-spmenu-s1").toggleClass("cbp-spmenu-open")
+    });*/
 
     $(".cbp-spmenu a").on("click", function() {
         console.log(">>>>>>>>>>>>>>>click")
@@ -30,6 +36,6 @@ angular.module('main_app').controller('NavbarCtrl', function($scope, $state, Log
         return LoginService.isAuthenticated();
     };
 
-    $('[data-toggle="tooltip"]').tooltip(); 
+    $('[data-toggle="tooltip"]').tooltip();
 
 });

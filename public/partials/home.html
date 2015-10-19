@@ -1,50 +1,15 @@
-<div class="container">
-	<div class="panel panel-default">
-		<div class="panel-heading">Home Page</div>
-		<div class="panel-body">
-			<div class="row">
-				<div class="col-sm-6">
-					<h2>Heading</h2>
-					<p>Donec id elit non mi porta gravida at eget metus. Fusce dapibus,tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus. Etiam porta sem malesuada magna mollis euismod. Donec sed odio dui.</p>
-					<p>
-						<a class="btn btn-primary" href="#">View details »</a>
-					</p>
-				</div>
-				<div class="col-sm-6">
-					<h2>Heading</h2>
-					<p>Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus. Etiam porta sem malesuada magna mollis euismod. Donec sed odio dui.</p>
-					<p>
-						<a class="btn btn-primary" href="#">View details »</a>
-					</p>
-				</div>
-			</div>
-		</div>
-		<div class="panel-footer text-center">
-			<ul class="list-inline">
-				<li><i class="ion-star"></i> {{stars | number}} stars</li>
-				<li><i class="ion-fork-repo"></i> {{forks | number}} forks</li>
-				<li><i class="ion-pull-request"></i> {{issues | number}} issues</li>
-			</ul>
-		</div>
-	</div>
-	<div class="text-center">
-		<a ui-sref="single_recipe" class="btn btn-default" href="https://github.com/sahat/satellizer"><i class="ion-social-github"></i> GitHub project</a>
-		<a class="btn btn-default" href="https://github.com/sahat/satellizer/issues/new"><i class="ion-bug"></i> Report issue</a>
-	</div>
-</div>
+<div class="col-md-12 col-sm-8 col-xs-8">
+	<tags-input ng-model="tags" add-on-paste="true" add-from-autocomplete-only="true">
 
-
-<tags-input ng-model="tags" add-on-paste="true" add-from-autocomplete-only="true">
-
-	<auto-complete source="loadTags()" load-on-down-arrow="true" load-on-focus="true" select-first-match="false"></auto-complete>
+    <auto-complete source="loadTags()" load-on-down-arrow="true" load-on-focus="true" select-first-match="false"></auto-complete>
 
 </tags-input>
 <p>Model : {{tags}}</p>
 <button ng-click="searchRecipes()">Search</button>
 
 <div class="row">
-		<div ng-repeat="recipe in recipes">
-            <div class="col-md-4">
+        <div ng-repeat="recipe in recipes">
+            <div class="col-md-4 col-sm-4">
                 <div class="outsideRecepyWrapper noselect">
                     <div class="insideRecepyWrapper">
                         <div class="recepyTitle">
@@ -109,3 +74,6 @@
             </div>
         </div>
         </div>
+</div>
+
+
