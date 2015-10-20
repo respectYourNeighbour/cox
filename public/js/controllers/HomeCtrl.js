@@ -88,34 +88,41 @@ angular.module('main_app').controller('HomeCtrl', function($scope, $http, ingred
 
     $scope.searchRecipes = function() {
         console.log("searchRecipes clicked")
-        var tagsString = $scope.tags.map(function(tag) {
-            console.log("tag",tag)
-            return tag.text;
-        })
-        ContentService.getRecipes(tagsString).success(function(data){
-            console.log("success data",data);
-            /*
-            THIS HAS BEEN COMENTED FOR TESTING PURPOSES
-            if(data.length > 0){
-                $scope.recipes = data;
-            } else {
-                toastr.error("No recipes found");
-                $scope.recipes = data;
-            }
-            */
-            $scope.recipes = recipesArray;
-            /*
+        $( ".searchBox" ).animate({
+            "margin-top": "0",
+            }, 1000, function() {
+            // Animation complete.
+                var tagsString = $scope.tags.map(function(tag) {
+                    console.log("tag",tag)
+                    return tag.text;
+                })
+                ContentService.getRecipes(tagsString).success(function(data){
+                    console.log("success data",data);
+                    /*
+                    THIS HAS BEEN COMENTED FOR TESTING PURPOSES
+                    if(data.length > 0){
+                        $scope.recipes = data;
+                    } else {
+                        toastr.error("No recipes found");
+                        $scope.recipes = data;
+                    }
+                    */
+                    $scope.recipes = recipesArray;
+                    /*
 
 
-                AICI AR TREBUI CA DESCRIEREA FIECAREI RETETE SA FIE LIMITATA LA 100 CARACTERE. DACA E PESTE 100 CARACTERE,
-                SA APARA SHOW MORE. CAND DAI CLICK PE SHOW MORE SA TE DUCA PE PAGINA CU RETETA SAU SA ITI AFISEZE INTREAGA DESCRIERE
-                http://viralpatel.net/blogs/dynamically-shortened-text-show-more-link-jquery/
+                        AICI AR TREBUI CA DESCRIEREA FIECAREI RETETE SA FIE LIMITATA LA 100 CARACTERE. DACA E PESTE 100 CARACTERE,
+                        SA APARA SHOW MORE. CAND DAI CLICK PE SHOW MORE SA TE DUCA PE PAGINA CU RETETA SAU SA ITI AFISEZE INTREAGA DESCRIERE
+                        http://viralpatel.net/blogs/dynamically-shortened-text-show-more-link-jquery/
 
-            */
-        }).error(function(data){
-            console.log("err data",data)
+                    */
+                }).error(function(data){
+                    console.log("err data",data)
+                });
+                console.log("tagsString",tagsString)
         });
-        console.log("tagsString",tagsString)
+
+
     }
 
     $scope.isAuthenticated = function() {

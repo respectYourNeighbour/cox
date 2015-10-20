@@ -29,19 +29,9 @@ ul {
     box-shadow: 0 2px 5px 0 rgba(0, 0, 0, .26);
 }
 .navbar-header {
-    float: left;
     padding-left: 15px;
 }
-.navbar-nav {
-    float: left;
-    margin: 0;
-}
-.navbar-nav > li {
-    float: left;
-}
-.navbar-nav > li > a {
-    padding: 15px;
-}
+
 .navbar-default {
     color: #fff;
     background: #fff;
