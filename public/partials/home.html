@@ -1,18 +1,20 @@
 <div class="col-md-12 col-sm-8 col-xs-8">
-	<tags-input ng-model="tags" add-on-paste="true" add-from-autocomplete-only="true">
+    <div class="searchBox">
+    	<tags-input ng-model="tags" add-on-paste="true" add-from-autocomplete-only="true">
 
-    <auto-complete source="loadTags()" load-on-down-arrow="true" load-on-focus="true" select-first-match="false"></auto-complete>
+            <auto-complete source="loadTags()" load-on-down-arrow="true" load-on-focus="true" select-first-match="false"></auto-complete>
 
-</tags-input>
-<p>Model : {{tags}}</p>
-<button ng-click="searchRecipes()">Search</button>
+        </tags-input>
+        <p>Model : {{tags}}</p>
+        <button ng-click="searchRecipes()">Search</button>
+    </div>
 
 <div class="row">
         <div ng-repeat="recipe in recipes">
             <div class="col-md-4 col-sm-4">
                 <div class="outsideRecepyWrapper noselect">
                     <div class="insideRecepyWrapper">
-                        <div class="recepyTitle">
+                        <div class="recepyTitle" ui-sref="single_recipe({ID:recipe._id})">
                             <header>
                                 <h2>{{recipe.nume}}</h2>
                             </header>
