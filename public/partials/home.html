@@ -9,17 +9,87 @@
         <button ng-click="searchRecipes()">Search</button>
     </div>
 
-<div class="row">
+    <div class="row">
         <div ng-repeat="recipe in recipes">
-            <div class="col-md-4 col-sm-4">
-                <div class="outsideRecepyWrapper noselect">
-                    <div class="insideRecepyWrapper">
-                        <div class="recepyTitle" ui-sref="single_recipe({ID:recipe._id})">
+            <div class="col-md-3 col-sm-3">
+                <div class="recipe outsideRecipeWrapper noselect">
+                    <div class="recipeTitle" ui-sref="single_recipe({ID:recipe._id})">
+                        <header>
+                            <h2>{{recipe.nume}}</h2>
+                        </header>
+                        <div class="picture">
+                            <div class="likeButton" ng-if="!isAuthenticated()">
+                                <span class="stars">
+                                    <span data-toggle="tooltip" title="Not really..">
+                                        <i class="fa fa-star-o"></i>
+                                    </span>
+                                    <span data-toggle="tooltip" title="It's ok.">
+                                        <i class="fa fa-star-o"></i>
+                                    </span>
+                                    <span data-toggle="tooltip" title="Super!">
+                                        <i class="fa fa-star-o"></i>
+                                    </span>
+                                </span>
+                                <i class="fa fa-thumbs-o-up"></i> <span>Like!</span>
+                            </div>
+                            <img class="img-responsive" ng-src={{recipe.image_link}} alt="Mountain View">
+                        </div>
+                    </div>
+                    <div class="recipeBody">
+                        <div class="preparationTime">
+                            <span><i class="fa fa-clock-o"></i> {{recipe.timp_preparare}}</span>
+                        </div>
+                        <div class="ingredientsWrapper">
+                            <table class="table table-condensed table-hover">
+                                <thead>
+                                    <tr>
+                                        <th>ingredient</th>
+                                        <th>bucati</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr ng-repeat="ingredient in recipe.ingrediente|limitTo:limit track by $index">
+                                        <td>{{ingredient}}</td>
+                                        <td>2 buc</td>
+                                    </tr>
+                                </tbody>
+                              </table>
+                              <a style="text-align:center" href ng-click="incrementLimit()">more</a>
+                              <a style="text-align:center" href ng-click="decrementLimit()">less</a>
+                        </div>
+                        <div class="detailsWrapper">
+                            <div class="accuracyCount">
+                                <p class="price">
+                                    <span>{{recipe.accuracy}}</span>
+                                    <sub>%</sub>
+                                </p>
+                                <div class="accuracyCount-footer">
+                                    <p>{{recipe.ingrediente_corecte}}</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
+
+
+<!--
+
+
+
+<div class="outsideRecipeWrapper noselect">
+                    <div class="insideRecipeWrapper">
+                        <div class="recipeTitle" ui-sref="single_recipe({ID:recipe._id})">
                             <header>
                                 <h2>{{recipe.nume}}</h2>
                             </header>
-                        </div>
-                        <div class="recepyBody">
                             <div class="picture">
                                 <div class="likeButton" ng-if="isAuthenticated()">
                                     <span class="stars">
@@ -37,6 +107,8 @@
                                 </div>
                                 <img ng-src={{recipe.image_link}} alt="Mountain View" style="width:290px;height:200px;">
                             </div>
+                        </div>
+                        <div class="recipeBody">
                             <div class="preparationTime">
                                 <span><i class="fa fa-clock-o"></i> {{recipe.timp_preparare}}</span>
                             </div>
@@ -73,9 +145,13 @@
                         </div>
                     </div>
                 </div>
-            </div>
-        </div>
-        </div>
-</div>
 
 
+
+
+
+
+
+
+
+                -->

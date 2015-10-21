@@ -13,6 +13,8 @@ angular.module('main_app').controller('HomeCtrl', function($scope, $http, ingred
   };
   console.log("loadTags",loadTags)
 
+
+
   var recipesArray = [
         {
             "nume" : "Ciorba Mexicană",
@@ -75,6 +77,15 @@ angular.module('main_app').controller('HomeCtrl', function($scope, $http, ingred
             "image_link":"images/image3.jpg"
         },
   ]
+
+  var limitStep = 3;
+    $scope.limit = limitStep;
+    $scope.incrementLimit = function() {
+        $scope.limit += limitStep;
+    };
+    $scope.decrementLimit = function() {
+        $scope.limit -= limitStep;
+    };
 
     $scope.loadTags = function() {
 
