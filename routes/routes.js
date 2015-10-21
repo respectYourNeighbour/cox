@@ -30,8 +30,9 @@ module.exports = function(app, db) {
         res.sendFile(url, null, function(err) {
             if (err)
                 res.status(500).send(err);
-            else
+            else{
                 res.status(200).end();
+            }
         });
     });
 

@@ -4,6 +4,6 @@ angular.module('main_app').controller('SingleRecipeCtrl', function($scope, $stat
    // $scope.recipe = dataForRecipe.data;
     $scope.recipe = {
     	"name" : "lorem ipsum",
-    	"body" : "more details about this recepy"
+    	"body" : "more details about this recipe"
     }
 });

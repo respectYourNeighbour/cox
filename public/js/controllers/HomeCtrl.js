@@ -13,6 +13,19 @@ angular.module('main_app').controller('HomeCtrl', function($scope, $http, ingred
   };
   console.log("loadTags",loadTags)
 
+
+$scope.ingredientPopover = {
+    templateUrl: 'myPopoverTemplate.html',
+  };
+
+$scope.rate = 0;
+$scope.maxStars = 3;
+  $scope.isReadonly = false;
+$scope.hoveringOver = function(value) {
+    $scope.overStar = value;
+    $scope.percent = 100 * (value / $scope.max);
+  };
+
   var recipesArray = [
         {
             "nume" : "Ciorba Mexicană",
@@ -22,7 +35,7 @@ angular.module('main_app').controller('HomeCtrl', function($scope, $http, ingred
             "number_likes" : "pie",
             "accuracy" : "80",
             "ingrediente_corecte" : "2/4 ingrediente",
-            "image_link":"images/image1.jpg"
+            "imageLink":"images/image1.jpg"
         },
         {
             "nume" : "Colţunaşi la cuptor",
@@ -32,7 +45,7 @@ angular.module('main_app').controller('HomeCtrl', function($scope, $http, ingred
             "number_likes" : "pie",
             "accuracy" : "90",
             "ingrediente_corecte" : "3/4 ingrediente",
-            "image_link":"images/image2.jpg"
+            "imageLink":"images/image2.jpg"
         },
         {
             "nume" : "Friptură de vită",
@@ -42,7 +55,7 @@ angular.module('main_app').controller('HomeCtrl', function($scope, $http, ingred
             "number_likes" : "pie",
             "accuracy" : "90",
             "ingrediente_corecte" : "3/4 ingrediente",
-            "image_link":"images/image3.jpg"
+            "imageLink":"images/image3.jpg"
         },
         {
             "nume" : "Friptură de vită",
@@ -52,7 +65,7 @@ angular.module('main_app').controller('HomeCtrl', function($scope, $http, ingred
             "number_likes" : "pie",
             "accuracy" : "90",
             "ingrediente_corecte" : "3/4 ingrediente",
-            "image_link":"images/image3.jpg"
+            "imageLink":"images/image3.jpg"
         },
         {
             "nume" : "Friptură de vită",
@@ -62,7 +75,7 @@ angular.module('main_app').controller('HomeCtrl', function($scope, $http, ingred
             "number_likes" : "pie",
             "accuracy" : "90",
             "ingrediente_corecte" : "3/4 ingrediente",
-            "image_link":"images/image3.jpg"
+            "imageLink":"images/image3.jpg"
         },
         {
             "nume" : "Friptură de vită",
@@ -72,20 +85,22 @@ angular.module('main_app').controller('HomeCtrl', function($scope, $http, ingred
             "number_likes" : "pie",
             "accuracy" : "90",
             "ingrediente_corecte" : "3/4 ingrediente",
-            "image_link":"images/image3.jpg"
+            "imageLink":"images/image3.jpg"
         },
   ]
 
-    $scope.loadTags = function() {
+  $scope.limit = 3;
+  $scope.loadTags = function() {
 
         return loadTags;
 
     };
 
+
     $scope.showMore = function() {
         console.log("showMore clicked")
     }
-
+    $scope.recipes = recipesArray; // THIS LINE IS HERE FOR TESTING PURPOSES ONLY SO I DONT HAVE TO PRESS SEARCH EACH TIME
     $scope.searchRecipes = function() {
         console.log("searchRecipes clicked")
         $( ".searchBox" ).animate({

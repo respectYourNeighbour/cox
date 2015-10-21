@@ -1,5 +1,5 @@
-angular.module('main_app', ['ui.router','toastr', 'satellizer','ngTagsInput']).config(function($stateProvider, $urlRouterProvider, $locationProvider, $authProvider) {
-    //console.log("here")
+angular.module('main_app', ['ui.router','toastr', 'satellizer','ngTagsInput','ui.bootstrap']).config(function($stateProvider, $urlRouterProvider, $locationProvider, $authProvider) {
+    console.log("here")
     $urlRouterProvider.otherwise('/');
     $stateProvider
         .state('home', {
@@ -90,7 +90,7 @@ angular.module('main_app', ['ui.router','toastr', 'satellizer','ngTagsInput']).c
     }
 }).run(function($rootScope,$state, LoginService) {
 	$rootScope.$on('$stateChangeSuccess', function(event, toState, toParams, fromState, fromParams){
-		//console.log("stateChangeSuccess")
+		console.log("stateChangeSuccess")
 	})
 	$rootScope.$on('$stateChangeStart', function(event, toState, toParams, fromState, fromParams){
 		console.log("stateChangeStart")

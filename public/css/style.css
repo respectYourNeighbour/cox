@@ -123,9 +123,17 @@ transform: translateY(9px) rotate(135deg);
 
 
 
-/*
+
 
 .searchBox {
-  width: 100%;
   margin-top: 240px;
-}*/
+}
+
+
+.recipe .recipeTitle header:hover {
+  background-color: #000;
+}
+
+.recipe .recipeTitle header:hover h2{
+  color: #FFF;
+}
