@@ -10,6 +10,9 @@ angular.module('main_app').controller('NavbarCtrl', function($scope, $state, Log
         });
     }
 
+
+    $scope.myVar = 123;
+
     /*showLeft.onclick = function() {
         $(this).toggleClass("active");
         $(this).toggleClass("effect1");

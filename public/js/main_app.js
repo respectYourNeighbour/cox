@@ -1,20 +1,23 @@
-angular.module('main_app', ['ui.router','toastr', 'satellizer','ngTagsInput','ui.bootstrap']).config(function($stateProvider, $urlRouterProvider, $locationProvider, $authProvider) {
+angular.module('main_app', ['ui.router','toastr', 'satellizer','ngTagsInput','ui.bootstrap']).config(function($stateProvider, $urlRouterProvider, $locationProvider, $authProvider,$interpolateProvider) {
     console.log("here")
     $urlRouterProvider.otherwise('/');
     $stateProvider
         .state('home', {
             url: '/',
             controller:'HomeCtrl',
-            templateUrl:'partials/home.html',
+            templateUrl:'partials/home',
             resolve : {
                 ingredients : function(ContentService){
                     return ContentService.getIngredients();
+                },
+                recipes : function(ContentService) {
+                    return ContentService.getAllRecipes();
                 }
             }
         })
         .state('login', {
             url: '/authentication',
-            templateUrl: 'partials/login.html',
+            templateUrl: 'partials/login',
             controller: 'LoginCtrl',
             resolve: {
                 skipIfLoggedIn: skipIfLoggedIn
@@ -22,7 +25,7 @@ angular.module('main_app', ['ui.router','toastr', 'satellizer','ngTagsInput','ui
         })
         .state('signup', {
             url: '/authentication',
-            templateUrl: 'partials/signup.html',
+            templateUrl: 'partials/signup',
             controller: 'SignUpCtrl',
             resolve: {
                 skipIfLoggedIn: skipIfLoggedIn
@@ -30,7 +33,7 @@ angular.module('main_app', ['ui.router','toastr', 'satellizer','ngTagsInput','ui
         })
         .state('state1', {
             url: '/state1',
-            templateUrl: 'partials/state1.html',
+            templateUrl: 'partials/state1',
             controller: 'RecipesCtrl',
             resolve : {
                 ingredients : function($http){
@@ -40,27 +43,31 @@ angular.module('main_app', ['ui.router','toastr', 'satellizer','ngTagsInput','ui
         })
         .state('profile', {
             url: '/profile',
-            templateUrl: 'partials/profile.html',
+            templateUrl: 'partials/profile',
             controller: 'ProfileCtrl',
             resolve : {
                 loginRequired : loginRequired
             }
         })
         .state('single_recipe', {
-            url: '/recipe/:ID',
-            templateUrl: 'partials/single_recipe.html',
-            controller: 'SingleRecipeCtrl'/*,
+            url: '/myrecipe/:ID',
+            templateUrl: 'partials/single_recipe',
+            controller: 'SingleRecipeCtrl',
             resolve : {
                 dataForRecipe : function($http, $stateParams, ContentService) {
                     console.log("$stateParams",$stateParams)
                     return ContentService.getRecipe($stateParams.ID)
                 }
-            }*/
+            }
         })
+
     $locationProvider.html5Mode({
 	  enabled: true,
-	  requireBase: false
+	  requireBase: true
 	});
+
+    $interpolateProvider.startSymbol('[[');
+    $interpolateProvider.endSymbol(']]');
 
     function loginRequired($q, $location, $auth, LoginService) {
         console.log("loginRequired")

@@ -11,4 +11,7 @@ angular.module('main_app').service('ContentService', function($http, $rootScope,
         	console.log("getRecipe by ID")
         	return $http.get('/recipe/' + ID);
         }
+        service.getAllRecipes = function(ingredients) {
+            return $http.get('/allRecipes')
+        }
 })

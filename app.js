@@ -35,7 +35,9 @@ var express = require('express'),
             protocol == 'https' ? next() : res.redirect('https://' + req.hostname + req.url);
         });
     }
-    app.use(express.static(path.join(__dirname, 'public')));
+    app.use(express.static(path.join(__dirname, '/public')));
+
+
 
     //routes(app,db);
 	require('./routes/routes.js')(app, db); // load our routes and pass in our app and fully configured passport

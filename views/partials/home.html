@@ -1,3 +1,4 @@
+<p ng-click="incrementValue()" ng-show="tester">Length111 : ([[value]])</p>
 <div class="col-md-12 col-sm-8 col-xs-8">
     <div class="searchBox">
     	<tags-input ng-model="tags" add-on-paste="true" add-from-autocomplete-only="true">
@@ -5,30 +6,32 @@
             <auto-complete source="loadTags()" load-on-down-arrow="true" load-on-focus="true" select-first-match="false"></auto-complete>
 
         </tags-input>
-        <p>Model : {{tags}}</p>
+        <p>Model : [[tags]]</p>
         <button ng-click="searchRecipes()">Search</button>
     </div>
 
     <div class="row">
+        Length : [[limit]]
         <div ng-repeat="recipe in recipes">
             <div class="col-md-3 col-sm-3">
                 <div class="recipe outsideRecipeWrapper noselect">
                     <div class="recipeTitle">
-                        <header ui-sref="single_recipe({ID:recipe._id})" style="cursor:pointer">
-                            <h2>{{recipe.nume}}</h2>
+                        <header ui-sref="single_recipe({ID:myRecipe._id})" style="cursor:pointer">
+                            <h2>[[recipe.nume]]</h2>
+
                         </header>
                         <div class="picture">
                             <div class="likeButton" ng-if="!isAuthenticated()">
                                 <i class="fa fa-thumbs-o-up"></i> <span>Like!</span>
                                 <uib-rating id="stars" ng-model="rate" max="maxStars" readonly="isReadonly" on-hover="hoveringOver(value)" on-leave="overStar = null" titles="['one','two','three']" aria-labelledby="default-rating"></uib-rating>
                             </div>
-                            {{recipe.imageLink}}
-                            <img class="img-responsive" ng-src="{{recipe.imageLink}}" alt="Mountain View">
+                            [[recipe.imageLink]]
+                            <img class="img-responsive" ng-src="[[recipe.imageLink]]" alt="Mountain View">
                         </div>
                     </div>
                     <div class="recipeBody">
                         <div class="preparationTime">
-                            <span><i class="fa fa-clock-o"></i> {{recipe.timp_preparare}}</span>
+                            <span><i class="fa fa-clock-o"></i> [[recipe.timp_preparare]]</span>
                         </div>
                         <div class="ingredientsWrapper">
                             <table class="table table-condensed table-hover">
@@ -40,7 +43,7 @@
                                 </thead>
                                 <tbody>
                                     <tr ng-repeat="ingredient in recipe.ingrediente|limitTo:limit track by $index">
-                                        <td>{{ingredient}}</td>
+                                        <td>[[ingredient]]</td>
                                         <td>2 buc</td>
                                     </tr>
                                 </tbody>
@@ -56,7 +59,7 @@
                                         </thead>
                                         <tbody>
                                             <tr ng-repeat="ingredient in recipe.ingrediente track by $index">
-                                                <td>{{ingredient}}</td>
+                                                <td>[[ingredient]]</td>
                                                 <td>2 buc</td>
                                             </tr>
                                         </tbody>
@@ -66,11 +69,11 @@
                         <div class="detailsWrapper">
                             <div class="accuracyCount">
                                 <p class="price">
-                                    <span>{{recipe.accuracy}}</span>
+                                    <span>[[recipe.accuracy]]</span>
                                     <sub>%</sub>
                                 </p>
                                 <div class="accuracyCount-footer">
-                                    <p>{{recipe.ingrediente_corecte}}</p>
+                                    <p>[[recipe.ingrediente_corecte]]</p>
                                 </div>
                             </div>
                         </div>
@@ -97,7 +100,7 @@ none:
                     <div class="insideRecipeWrapper">
                         <div class="recipeTitle" ui-sref="single_recipe({ID:recipe._id})">
                             <header>
-                                <h2>{{recipe.nume}}</h2>
+                                <h2>[[recipe.nume]]</h2>
                             </header>
                             <div class="picture">
                                 <div class="likeButton" ng-if="isAuthenticated()">
@@ -114,12 +117,12 @@ none:
                                     </span>
                                     <i class="fa fa-thumbs-o-up"></i> <span>Like!</span>
                                 </div>
-                                <img ng-src={{recipe.image_link}} alt="Mountain View" style="width:290px;height:200px;">
+                                <img ng-src=[[recipe.image_link]] alt="Mountain View" style="width:290px;height:200px;">
                             </div>
                         </div>
                         <div class="recipeBody">
                             <div class="preparationTime">
-                                <span><i class="fa fa-clock-o"></i> {{recipe.timp_preparare}}</span>
+                                <span><i class="fa fa-clock-o"></i> [[recipe.timp_preparare]]</span>
                             </div>
                             <div class="ingredientsWrapper">
                                 <div class="ingredientContent ingredients">
@@ -143,11 +146,11 @@ none:
 
                                 <div class="accuracyCount">
                                     <p class="price">
-                                        <span>{{recipe.accuracy}}</span>
+                                        <span>[[recipe.accuracy]]</span>
                                         <sub>%</sub>
                                     </p>
                                     <div class="accuracyCount-footer">
-                                        <p>{{recipe.ingrediente_corecte}}</p>
+                                        <p>[[recipe.ingrediente_corecte]]</p>
                                     </div>
                                 </div>
                             </div>

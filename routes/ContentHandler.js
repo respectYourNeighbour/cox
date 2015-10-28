@@ -6,6 +6,8 @@ function ContentHandler(db) {
 
     var users = new UsersDAO(db);
 
+    this.index =
+
     this.returnAllIngredients = function(req, res, next) {
         console.log("returnAllIngredients")
         //res.render('index.html');
@@ -33,7 +35,7 @@ function ContentHandler(db) {
     }
 
     this.getRecipeByID = function(req, res, next) {
-        console.log("req",req.params.ID)
+        console.log("getRecipeByID req",req.params.ID)
         db.collection('recipes').findOne({
             _id : ObjectId(req.params.ID)
         }, function(err, item){
@@ -41,6 +43,20 @@ function ContentHandler(db) {
             console.log("item",item)
             res.json(item)
         })
+    }
+
+    this.getAllRecipes = function(req, res, next) {
+        console.log("getAllRecipes req",req.params.ID)
+        db.collection('recipes').find({}).toArray(function(err,items) {
+            console.log("err",err)
+            console.log("getAllRecipes----items",items)
+            res.json(items);
+        })
+    }
+
+    this.partials = function(req,res,next) {
+        var name = req.params.name;
+        console.log("name",name);
     }
 }
 

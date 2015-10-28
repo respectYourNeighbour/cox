@@ -1,140 +1,103 @@
-angular.module('main_app').controller('HomeCtrl', function($scope, $http, ingredients, LoginService, ContentService, toastr) {
-      $scope.tags = [
-    { text: 'Tag1' },
-    { text: 'Tag2' },
-    { text: 'Tag3' }
-  ];
-  var loadTags = [];
-  console.log("loadTags1",loadTags)
-  console.log("ingredients",ingredients)
-  for (var i = 0; i < ingredients.data.length; i++) {
-      //console.log("data[]",ingredients.data[i])
-      loadTags[i] = {"text" : ingredients.data[i].nume}
-  };
-  console.log("loadTags",loadTags)
+angular.module('main_app').controller('HomeCtrl', function($scope, $rootScope, $http, ingredients, LoginService, ContentService, toastr, recipes) {
+    $scope.tags = [{
+        text: 'Tag1'
+    }, {
+        text: 'Tag2'
+    }, {
+        text: 'Tag3'
+    }];
+    var loadTags = [];
+    console.log("loadTags1", loadTags)
+    console.log("ingredients", ingredients)
+    console.log("recipes", recipes)
+    for (var i = 0; i < ingredients.data.length; i++) {
+        //console.log("data[]",ingredients.data[i])
+        loadTags[i] = {
+            "text": ingredients.data[i].nume
+        }
+    };
+    console.log("loadTags", loadTags)
+    $scope.myVar = "111";
+    $scope.tester = true;
 
+    console.log("$scope.myVar", $scope.myVar)
 
-$scope.ingredientPopover = {
-    templateUrl: 'myPopoverTemplate.html',
-  };
+    $scope.ingredientPopover = {
+        templateUrl: 'myPopoverTemplate.html',
+    };
 
-$scope.rate = 0;
-$scope.maxStars = 3;
-  $scope.isReadonly = false;
-$scope.hoveringOver = function(value) {
-    $scope.overStar = value;
-    $scope.percent = 100 * (value / $scope.max);
-  };
+    $scope.value = 1;
+    $scope.incrementValue = function() {
+        console.log("increment")
+        $scope.value += 1;
+    }
 
-  var recipesArray = [
-        {
-            "nume" : "Ciorba Mexicană",
-            "timp_preparare" : "42 minute",
-            "ingrediente" : ["ingredient 1", "ingredient 2","ingredient 1", "ingredient 2",
-                            "ingredient 1", "ingredient 2","ingredient 1", "ingredient 2"],
-            "number_likes" : "pie",
-            "accuracy" : "80",
-            "ingrediente_corecte" : "2/4 ingrediente",
-            "imageLink":"images/image1.jpg"
-        },
-        {
-            "nume" : "Colţunaşi la cuptor",
-            "timp_preparare" : "23 minute",
-            "ingrediente" : ["ingredient 1", "ingredient 2","ingredient 1", "ingredient 2",
-                            "ingredient 1", "ingredient 2","ingredient 1", "ingredient 2"],
-            "number_likes" : "pie",
-            "accuracy" : "90",
-            "ingrediente_corecte" : "3/4 ingrediente",
-            "imageLink":"images/image2.jpg"
-        },
-        {
-            "nume" : "Friptură de vită",
-            "timp_preparare" : "12 minute",
-            "ingrediente" : ["ingredient 1", "ingredient 2","ingredient 1", "ingredient 2",
-                            "ingredient 1", "ingredient 2","ingredient 1", "ingredient 2"],
-            "number_likes" : "pie",
-            "accuracy" : "90",
-            "ingrediente_corecte" : "3/4 ingrediente",
-            "imageLink":"images/image3.jpg"
-        },
-        {
-            "nume" : "Friptură de vită",
-            "timp_preparare" : "12 minute",
-            "ingrediente" : ["ingredient 1", "ingredient 2","ingredient 1", "ingredient 2",
-                            "ingredient 1", "ingredient 2","ingredient 1", "ingredient 2"],
-            "number_likes" : "pie",
-            "accuracy" : "90",
-            "ingrediente_corecte" : "3/4 ingrediente",
-            "imageLink":"images/image3.jpg"
-        },
-        {
-            "nume" : "Friptură de vită",
-            "timp_preparare" : "12 minute",
-            "ingrediente" : ["ingredient 1", "ingredient 2","ingredient 1", "ingredient 2",
-                            "ingredient 1", "ingredient 2","ingredient 1", "ingredient 2"],
-            "number_likes" : "pie",
-            "accuracy" : "90",
-            "ingrediente_corecte" : "3/4 ingrediente",
-            "imageLink":"images/image3.jpg"
-        },
-        {
-            "nume" : "Friptură de vită",
-            "timp_preparare" : "12 minute",
-            "ingrediente" : ["ingredient 1", "ingredient 2","ingredient 1", "ingredient 2",
-                            "ingredient 1", "ingredient 2","ingredient 1", "ingredient 2"],
-            "number_likes" : "pie",
-            "accuracy" : "90",
-            "ingrediente_corecte" : "3/4 ingrediente",
-            "imageLink":"images/image3.jpg"
-        },
-  ]
+    $scope.rate = 0;
+    $scope.maxStars = 3;
+    $scope.isReadonly = false;
+    $scope.hoveringOver = function(value) {
+        $scope.overStar = value;
+        $scope.percent = 100 * (value / $scope.max);
+    };
 
-  $scope.limit = 3;
-  $scope.loadTags = function() {
+    var recipesArray = recipes.data;
+
+    $rootScope.limit = 3;
+    $scope.loadTags = function() {
 
         return loadTags;
 
     };
+
+    var person = {
+        firstName: "Ajay",
+        lastName: "Sattikar",
+        imageSrc: "http://odetocode.com/Images/scott_allen_2.jpg"
+    };
+
+    $scope.text = "Hello Angular!";
+    $scope.person = person;
 
 
     $scope.showMore = function() {
         console.log("showMore clicked")
     }
     $scope.recipes = recipesArray; // THIS LINE IS HERE FOR TESTING PURPOSES ONLY SO I DONT HAVE TO PRESS SEARCH EACH TIME
+    console.log("$scope.recipes", $scope.recipes)
     $scope.searchRecipes = function() {
         console.log("searchRecipes clicked")
-        $( ".searchBox" ).animate({
+        $(".searchBox").animate({
             "margin-top": "0",
-            }, 1000, function() {
+        }, 1000, function() {
             // Animation complete.
-                var tagsString = $scope.tags.map(function(tag) {
-                    console.log("tag",tag)
-                    return tag.text;
-                })
-                ContentService.getRecipes(tagsString).success(function(data){
-                    console.log("success data",data);
-                    /*
-                    THIS HAS BEEN COMENTED FOR TESTING PURPOSES
-                    if(data.length > 0){
-                        $scope.recipes = data;
-                    } else {
-                        toastr.error("No recipes found");
-                        $scope.recipes = data;
-                    }
-                    */
-                    $scope.recipes = recipesArray;
-                    /*
+            var tagsString = $scope.tags.map(function(tag) {
+                console.log("tag", tag)
+                return tag.text;
+            })
+            ContentService.getRecipes(tagsString).success(function(data) {
+                console.log("success data", data);
+                /*
+                THIS HAS BEEN COMENTED FOR TESTING PURPOSES
+                if(data.length > 0){
+                    $scope.recipes = data;
+                } else {
+                    toastr.error("No recipes found");
+                    $scope.recipes = data;
+                }
+                */
+                $scope.recipes = recipesArray;
+                /*
 
 
-                        AICI AR TREBUI CA DESCRIEREA FIECAREI RETETE SA FIE LIMITATA LA 100 CARACTERE. DACA E PESTE 100 CARACTERE,
-                        SA APARA SHOW MORE. CAND DAI CLICK PE SHOW MORE SA TE DUCA PE PAGINA CU RETETA SAU SA ITI AFISEZE INTREAGA DESCRIERE
-                        http://viralpatel.net/blogs/dynamically-shortened-text-show-more-link-jquery/
+                    AICI AR TREBUI CA DESCRIEREA FIECAREI RETETE SA FIE LIMITATA LA 100 CARACTERE. DACA E PESTE 100 CARACTERE,
+                    SA APARA SHOW MORE. CAND DAI CLICK PE SHOW MORE SA TE DUCA PE PAGINA CU RETETA SAU SA ITI AFISEZE INTREAGA DESCRIERE
+                    http://viralpatel.net/blogs/dynamically-shortened-text-show-more-link-jquery/
 
-                    */
-                }).error(function(data){
-                    console.log("err data",data)
-                });
-                console.log("tagsString",tagsString)
+                */
+            }).error(function(data) {
+                console.log("err data", data)
+            });
+            console.log("tagsString", tagsString)
         });
 
 
