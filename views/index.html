@@ -162,7 +162,7 @@
                     </a>
                 </li>
                 <li>
-                    <a ui-sref="cart" ng-if="isAuthenticated()">
+                    <a ui-sref="cart" ng-if="!isAuthenticated()">
                         <span class="fa-stack fa-lg pull-left"><i class="fa fa-dashboard fa-stack-1x "></i></span>
                         Cart [[nrIngr]]
                     </a>

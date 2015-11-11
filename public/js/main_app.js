@@ -65,7 +65,7 @@ angular.module('main_app', ['ui.router','toastr', 'satellizer','ngTagsInput','ui
             templateUrl: 'partials/cart',
             controller: 'CartCtrl',
             resolve : {
-                loginRequired : loginRequired
+                //loginRequired : loginRequired
             }
         })
 

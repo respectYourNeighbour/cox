@@ -2,6 +2,7 @@
 // shopping cart
 //
 function shoppingCart(cartName) {
+    console.log("shoppingCart")
     this.cartName = cartName;
     this.clearCart = false;
     this.checkoutParameters = {};
@@ -13,6 +14,7 @@ function shoppingCart(cartName) {
     // save items to local storage when unloading
     var self = this;
     $(window).unload(function () {
+        console.log("window unload")
         if (self.clearCart) {
             self.clearItems();
         }
@@ -23,6 +25,7 @@ function shoppingCart(cartName) {
 
 // load items from local storage
 shoppingCart.prototype.loadItems = function () {
+    console.log("load items")
     var items = localStorage != null ? localStorage[this.cartName + "_items"] : null;
 
     if(localStorage != null ){
