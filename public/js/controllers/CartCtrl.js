@@ -1,11 +1,6 @@
-angular.module('main_app').controller('SingleRecipeCtrl', function($scope, $rootScope, $state, toastr, ContentService, LoginService,CartService, dataForRecipe) {
-    console.log("SingleRecipeCtrl controller");
+angular.module('main_app').controller('CartCtrl', function($scope, $state, toastr, ContentService, LoginService, dataForRecipe) {
+    console.log("CartCtrl controller");
     console.log("dataForRecipe",dataForRecipe)
-    console.log("rootscope nringr : ", $rootScope.nrIngr)
-    	$scope.cart = CartService.cart;
-
-
-    $rootScope.nrIngr = 6;
    // $scope.recipe = dataForRecipe.data;
     $scope.recipe = dataForRecipe.data;
 
@@ -17,7 +12,7 @@ angular.module('main_app').controller('SingleRecipeCtrl', function($scope, $root
     		console.log("clicked")
     	} else {
     		console.log("User trying to add ingredient to cart. Not logged in.")
-    		toastr.error("You are not logged in. <a href='/authentication' style='color:blue'>Login</a> here",{
+    		toastr.error("You are not logged in. <a href='/authentication'>Login</a> here",{
     			allowHtml : true
     		});
     	}

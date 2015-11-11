@@ -1,4 +1,7 @@
-angular.module('main_app').controller('HomeCtrl', function($scope, $rootScope, $http, ingredients, LoginService, ContentService, toastr, recipes) {
+angular.module('main_app').controller('HomeCtrl', function($scope, $rootScope, $http, ingredients, LoginService, ContentService, CartService, toastr, recipes) {
+    console.log("1111111111111111111111111111111",CartService)
+    $scope.cart = CartService.cart;
+    console.log("@2222222222222222222222222222",$scope.cart)
     $scope.tags = [{
         text: 'Tag1'
     }, {

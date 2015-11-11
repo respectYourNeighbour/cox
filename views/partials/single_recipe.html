@@ -1,28 +1,108 @@
 <div class="container recipe">
 		<div class="row recipeSummary">
-			<header>header</header>
+			<header>[[recipe.nume]]</header>
 			<div class="col-md-6 authorSummary">
-				Lorem ipsum
+				<div class="col-md-8 col-md-offset-2">
+					<div class="authorSummaryDetails">
+						<div id="rate">
+							<uib-rating id="stars" ng-model="rate" min="2" max="maxStars" readonly="true" on-hover="hoveringOver(value)" on-leave="overStar = null" titles="['one','two','three']" aria-labelledby="default-rating"></uib-rating>
+						</div>
+						<div id="author">Recipe by : <a href="#">Jamila Cuisine</a></div>
+						<div id="description">Cea mai smechera reteta iar aceasta descriere are mai multe cuvinte doar asa ca sa vedem ce fel se vede un scris din partea autorului in care el isi descrie reteta in cateva cuvinte.</div>
+					</div>
+
+				</div>
 			</div>
 			<div class="col-md-6 recipeImage">
 				<img class="img-responsive" src="images/image1.jpg">
 			</div>
 		</div>
 		<div class="row recipeBody">
-			<h2>Ingrediente</h2>
-				<div class="col-md-4">
-					<span><i class="fa fa-list fa-2x"></i></span>
-					<ul>
-						<li>ingredient 1</li>
-						<li>ingredient 2</li>
-					</ul>
+			<div class="row">
+				<h2></h2>
+					<div class="col-md-3">
+						<div class="col-md-3">
+							<span><i class="fa fa-clock-o fa-3x"></i></span>
+						</div>
+						<div class="col-md-6">
+							<p>timp pregatire</p>
+							<p>[[recipe.timp_preparare]]</p>
+
+						</div>
+					</div>
+					<div class="col-md-3">
+						<div class="col-md-3">
+							<span><i class="fa fa-pie-chart fa-3x"></i></span>
+						</div>
+						<div class="col-md-6">
+							<p>timp pregatire</p>
+							<p>4 portii</p>
+						</div>
+					</div>
+					<div class="col-md-3">
+						<div class="col-md-3">
+							<span><i class="fa fa-clock-o fa-3x"></i></span>
+						</div>
+						<div class="col-md-6">
+							<p>timp pregatire</p>
+							<p>60 minute</p>
+						</div>
+					</div>
+					<div class="col-md-3">
+						<div class="col-md-3">
+							<span style='cursor:pointer'><i class="fa fa-plus-circle fa-3x"></i></span>
+						</div>
+						<div class="col-md-6">
+							<p>add all ingredients to list</p>
+						</div>
+					</div>
+			</div>
+			<div class="row">
+				<h2></h2>
+				<div class="col-md-6">
+					<div class="ingredientsList">
+						<div class="row" ng-repeat="ingredient in recipe.ingrediente track by $index">
+							<div class="col-md-4 col-sm-4"><i class="circle" ng-click="cart.addItem()"></i>[[ingredient.nume]]</div>
+							<div class="col-md-2 col-sm-2">[[ingredient.cantitate]]</div>
+							<div class="col-md-2 col-sm-2">[[ingredient.um]]</div>
+						</div>
+						<!--
+						<ul>
+							<li ng-repeat="ingredient in recipe.ingrediente track by $index" ng-if="$index%2 == 0">
+								<i class="circle" ng-click="cart.addItem()"></i>
+								<p style="float:right">[[ingredient.nume]] <span>[[ingredient.cantitate]] [[ingredient.um]]</span></p>
+							</li>
+						</ul>
+						<ul>
+							<li ng-repeat="ingredient in recipe.ingrediente track by $index" ng-if="$index%2 == 1">
+								<i class="circle" ng-click="addIngredientToCart($index)"></i>
+								<p style="float:right">[[ingredient.nume]] <span>[[ingredient.cantitate]] [[ingredient.um]]</span></p>
+							</li>
+						</ul>
+						-->
+					</div>
 				</div>
-				<div class="col-md-4">
-					<span><i class="fa fa-pie-chart fa-2x"></i></span> 4 portii
+				<div class="col-md-6">
+					<div class="directionsList">
+						<ul>
+							<li>
+								<div class="ingredientAdd">
+									+
+								</div>
+								<p>ingredient 1</p>
+							</li>
+							<li>
+								<div class="ingredientAdd">
+									+
+								</div>
+								<p>ingredient 1</p>
+							</li>
+						</ul>
+					</div>
 				</div>
-				<div class="col-md-4">
-					<span><i class="fa fa-clock-o fa-2x"></i></span> 60 minute
-				</div>
+			</div>
+
+
 		</div>
 		<div class="row">
 			<div class="recipeFooter">footer</div>

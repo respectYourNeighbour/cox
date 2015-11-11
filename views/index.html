@@ -38,6 +38,7 @@
 
     <script src="js/vendor/angular-toastr.tpls.js"></script>
     <script src="js/vendor/satellizer.js"></script>
+    <script src="js/vendor/cart.js"></script>
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/angular-ui-bootstrap/0.14.2/ui-bootstrap-tpls.js"></script>
    <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/angular-ui-bootstrap/0.14.2/ui-bootstrap.js"></script>-->
@@ -47,6 +48,7 @@
     <script type="text/javascript" src="js/services/LoginService.js"></script>
     <script type="text/javascript" src="js/services/UserService.js"></script>
     <script type="text/javascript" src="js/services/ContentService.js"></script>
+    <script type="text/javascript" src="js/services/CartService.js"></script>
     <script type="text/javascript" src="js/controllers/HomeCtrl.js"></script>
     <script type="text/javascript" src="js/controllers/ProfileCtrl.js"></script>
     <script type="text/javascript" src="js/controllers/NavbarCtrl.js"></script>
@@ -54,6 +56,7 @@
     <script type="text/javascript" src="js/controllers/SignUpCtrl.js"></script>
     <script type="text/javascript" src="js/controllers/RecipesCtrl.js"></script>
     <script type="text/javascript" src="js/controllers/SingleRecipeCtrl.js"></script>
+    <script type="text/javascript" src="js/controllers/CartCtrl.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/angular-ui-router/0.2.15/angular-ui-router.min.js"></script>
     <!--
 
@@ -123,12 +126,6 @@
                     </a>
                 </li>
                 <li>
-                    <a href="#">
-                        <span class="fa-stack fa-lg pull-left"><i class="fa fa-dashboard fa-stack-1x "></i></span>
-                        Dashboard
-                    </a>
-                </li>
-                <li>
                     <a ui-sref="login" ng-if="!isAuthenticated()">
                         <span class="fa-stack fa-lg pull-left"><i class="fa fa-dashboard fa-stack-1x "></i></span>
                         Login
@@ -162,6 +159,12 @@
                     <a href="#">
                         <span class="fa-stack fa-lg pull-left"><i class="fa fa-dashboard fa-stack-1x "></i></span>
                         Users List
+                    </a>
+                </li>
+                <li>
+                    <a ui-sref="cart" ng-if="isAuthenticated()">
+                        <span class="fa-stack fa-lg pull-left"><i class="fa fa-dashboard fa-stack-1x "></i></span>
+                        Cart [[nrIngr]]
                     </a>
                 </li>
             </ul>

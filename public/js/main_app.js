@@ -60,6 +60,14 @@ angular.module('main_app', ['ui.router','toastr', 'satellizer','ngTagsInput','ui
                 }
             }
         })
+        .state('cart', {
+            url: '/cart',
+            templateUrl: 'partials/cart',
+            controller: 'CartCtrl',
+            resolve : {
+                loginRequired : loginRequired
+            }
+        })
 
     $locationProvider.html5Mode({
 	  enabled: true,

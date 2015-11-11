@@ -1,6 +1,6 @@
-angular.module('main_app').controller('NavbarCtrl', function($scope, $state, LoginService, toastr) {
+angular.module('main_app').controller('NavbarCtrl', function($scope, $rootScope,  $state, LoginService, toastr) {
     console.log("NavbarCtrl controller");
-
+    $rootScope.nrIngr = 4;
     $scope.logout = function() {
         LoginService.logout().then(function(response) {
             toastr.info('You have been logged out');
