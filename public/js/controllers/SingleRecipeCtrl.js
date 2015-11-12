@@ -12,6 +12,9 @@ angular.module('main_app').controller('SingleRecipeCtrl', function($scope, $root
     $scope.rate = 3;//cate like-uri are
     $scope.maxStars = 5;
     console.log(LoginService.isAuthenticated())
+
+
+
     $scope.addIngredientToCart = function(id) {
     	if(LoginService.isAuthenticated()) {
     		console.log("clicked")

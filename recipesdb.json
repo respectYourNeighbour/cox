@@ -1,0 +1,142 @@
+[
+    {
+        "_id" : "562f3afe7e281120272f7c93",
+        "nume" : "Ciorba Mexicană",
+        "timp_preparare" : "42 minute",
+        "ingrediente" : [
+            {
+                "nume" : "oua",
+                "um" : "buc",
+                "cantitate" : "2"
+            },
+            {
+                "nume" : "carne de vita",
+                "um" : "kg",
+                "cantitate" : "2"
+            },
+            {
+                "nume" : "patrunjel",
+                "um" : "g",
+                "cantitate" : "200"
+            },
+            {
+                "nume" : "lapte",
+                "um" : "ml",
+                "cantitate" : "500"
+            },
+            {
+                "nume" : "marar",
+                "um" : "buc",
+                "cantitate" : "6"
+            }
+        ],
+        "number_likes" : "pie",
+        "accuracy" : "80",
+        "ingrediente_corecte" : "2/4 ingrediente",
+        "imageLink" : "images/image1.jpg"
+    },
+    {
+        "_id" : "562f3b087e281120272f7c94",
+        "nume" : "Colţunaşi la cuptor",
+        "timp_preparare" : "23 minute",
+        "ingrediente" : [
+            {
+                "nume" : "lapte",
+                "um" : "buc",
+                "cantitate" : "2"
+            },
+            {
+                "nume" : "carne",
+                "um" : "kg",
+                "cantitate" : "2"
+            },
+            {
+                "nume" : "branza",
+                "um" : "g",
+                "cantitate" : "200"
+            },
+            {
+                "nume" : "oua",
+                "um" : "ml",
+                "cantitate" : "500"
+            }
+        ],
+        "number_likes" : "pie",
+        "accuracy" : "90",
+        "ingrediente_corecte" : "3/4 ingrediente",
+        "imageLink" : "images/image2.jpg"
+    },
+    {
+        "_id" : "562f3b147e281120272f7c95",
+        "nume" : "Friptură de vită",
+        "timp_preparare" : "12 minute",
+        "ingrediente" : [
+            {
+                "nume" : "oua",
+                "um" : "buc",
+                "cantitate" : "2"
+            }
+        ],
+        "number_likes" : "pie",
+        "accuracy" : "90",
+        "ingrediente_corecte" : "3/4 ingrediente",
+        "imageLink" : "images/image3.jpg"
+    },
+    {
+        "_id" : "562f3b1a7e281120272f7c96",
+        "nume" : "Friptură de vită",
+        "timp_preparare" : "12 minute",
+        "ingrediente" : [
+            "ingredient 1",
+            "ingredient 2",
+            "ingredient 1",
+            "ingredient 2",
+            "ingredient 1",
+            "ingredient 2",
+            "ingredient 1",
+            "ingredient 2"
+        ],
+        "number_likes" : "pie",
+        "accuracy" : "90",
+        "ingrediente_corecte" : "3/4 ingrediente",
+        "imageLink" : "images/image3.jpg"
+    },
+    {
+        "_id" : "562f3b247e281120272f7c97",
+        "nume" : "Friptură de vită",
+        "timp_preparare" : "12 minute",
+        "ingrediente" : [
+            "ingredient 1",
+            "ingredient 2",
+            "ingredient 1",
+            "ingredient 2",
+            "ingredient 1",
+            "ingredient 2",
+            "ingredient 1",
+            "ingredient 2"
+        ],
+        "number_likes" : "pie",
+        "accuracy" : "90",
+        "ingrediente_corecte" : "3/4 ingrediente",
+        "imageLink" : "images/image3.jpg"
+    },
+    {
+        "_id" : "562f3b287e281120272f7c98",
+        "nume" : "Friptură de vită",
+        "timp_preparare" : "12 minute",
+        "ingrediente" : [
+            "ingredient 1",
+            "ingredient 2",
+            "ingredient 1",
+            "ingredient 2",
+            "ingredient 1",
+            "ingredient 2",
+            "ingredient 1",
+            "ingredient 2"
+        ],
+        "number_likes" : "pie",
+        "accuracy" : "90",
+        "ingrediente_corecte" : "3/4 ingrediente",
+        "imageLink" : "images/image3.jpg"
+    }
+]

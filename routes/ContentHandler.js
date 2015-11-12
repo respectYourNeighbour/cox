@@ -2,6 +2,7 @@ var LOG_TAG = "ContentHandler";
 var UsersDAO = require('../DAO/users').UsersDAO
 var User = require('../models/user')
 var ObjectId = require('mongoose').Types.ObjectId;
+var recipes = require('../recipesdb');
 function ContentHandler(db) {
 
     var users = new UsersDAO(db);
@@ -36,22 +37,32 @@ function ContentHandler(db) {
 
     this.getRecipeByID = function(req, res, next) {
         console.log("getRecipeByID req",req.params.ID)
-        db.collection('recipes').findOne({
+        /*db.collection('recipes').findOne({
             _id : ObjectId(req.params.ID)
         }, function(err, item){
             console.log("err",err)
             console.log("item",item)
             res.json(item)
-        })
+        })*/
+        var sent = false;
+        for(var i = 0; i<recipes.length && !sent;i++) {
+            console.log("recipes[i]",recipes[i]._id)
+            if(recipes[i]._id == req.params.ID) {
+                res.json(recipes[i]);
+                sent = true;
+            }
+        }
     }
 
     this.getAllRecipes = function(req, res, next) {
         console.log("getAllRecipes req",req.params.ID)
-        db.collection('recipes').find({}).toArray(function(err,items) {
+        console.log("recipes",recipes)
+        /*db.collection('recipes').find({}).toArray(function(err,items) {
             console.log("err",err)
             console.log("getAllRecipes----items",items)
             res.json(items);
-        })
+        })*/
+        res.json(recipes);
     }
 
     this.partials = function(req,res,next) {

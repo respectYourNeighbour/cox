@@ -1,7 +1,8 @@
 <div class="container">
 	<div class="col-md-8">
-		<table class="table table-bordered">
-
+		<div class="col-md-12" ng-repeat="item in cart.items">
+			<header style="background:#FFF; text-align:center"><h3>[[item.nume]]</h3></header>
+			<table class="table table-bordered" style="background:#FFF">
                 <!-- header -->
                 <tr class="well">
                     <td><b>Item</b></td>
@@ -13,27 +14,27 @@
                 <!-- empty cart message -->
                 <tr ng-hide="cart.getTotalCount() > 0" >
                     <td class="tdCenter" colspan="4">
-                        Your cart is empty.
+                        Your cart is empty. [[cart.items.ingredients.length]]
                     </td>
                 </tr>
 
                 <!-- cart items -->
-                <tr ng-repeat="item in cart.items | orderBy:'name'">
-                    <td>nume<!--{{item.name}}--></td>
+                <tr ng-repeat="ingredient in item.ingredients | orderBy:'name'">
+                    <td>[[ingredient.nume]]</td>
                     <td class="tdCenter">
                       <div class="input-append">
                         <!-- use type=tel instead of  to prevent spinners -->
                         <input
-                            class="span3 text-center" type="tel" 
-                            ng-model="item.quantity" 
+                            class="span3 text-center" type="tel"
+                            ng-model="ingredient.cantitate"
                             ng-change="cart.saveItems()" />
-                        <button 
-                            class="btn btn-success" type="button" 
-                            ng-disabled="item.quantity >= 1000"
-                            ng-click="cart.addItem(item.sku, item.name, item.price, +1)">+</button>
-                        <button 
-                            class="btn btn-inverse" type="button" 
-                            ng-disabled="item.quantity <= 1"
+                        <button
+                            class="btn btn-success" type="button"
+                            ng-disabled="ingredient.cantitate >= 1000"
+                            ng-click="cart.addItem(ingredient,item.nume)">+</button>
+                        <button
+                            class="btn btn-inverse" type="button"
+                            ng-disabled="ingredient.cantitate <= 1"
                             ng-click="cart.addItem(item.sku, item.name, item.price, -1)">-</button>
                       </div>
                     </td>
@@ -53,17 +54,18 @@
                     <td />
                 </tr>
             </table>
-        </div>
+    	</div>
+    </div>
         <div class="col-md-4">
             <p class="text-info">
-                <button 
-                    class="btn btn-block" 
+                <button
+                    class="btn btn-block"
                     onclick="window.location.href='default.htm'">
                     <i class="icon-chevron-left" /> back to store
                 </button>
-                <button 
-                    class="btn btn-block btn-danger" 
-                    ng-click="cart.clearItems()" 
+                <button
+                    class="btn btn-block btn-danger"
+                    ng-click="cart.clearItems()"
                     ng-disabled="cart.getTotalCount() < 1" >
                     <i class="icon-trash icon-white" /> clear cart
                 </button>
@@ -78,15 +80,15 @@
                     ng-disabled="cart.getTotalCount() < 1">
                     <i class="icon-ok icon-white" /> check out using PayPal
                 </button>
-                <button 
-                    class="btn btn-block btn-primary" 
-                    ng-click="cart.checkout('Google')" 
+                <button
+                    class="btn btn-block btn-primary"
+                    ng-click="cart.checkout('Google')"
                     ng-disabled="cart.getTotalCount() < 1">
                     <i class="icon-ok icon-white" /> check out using Google
                 </button>
-                <button 
-                    class="btn btn-block btn-primary" 
-                    ng-click="cart.checkout('Stripe')" 
+                <button
+                    class="btn btn-block btn-primary"
+                    ng-click="cart.checkout('Stripe')"
                     ng-disabled="cart.getTotalCount() < 1">
                     <i class="icon-ok icon-white" /> check out using Stripe
                 </button>
